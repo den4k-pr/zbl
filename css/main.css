@@ -1,0 +1,338 @@
+.s1 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Onest', sans-serif;
+  background-color: #000;
+}
+
+/* =========================================
+   MOBILE FIRST (до 863px) 
+   ========================================= */
+.s1__hero-wrapper {
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, #1C1C1C 0%, #090909 100%);
+  padding: 45px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 926px;
+  overflow: hidden;
+}
+
+.s1__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.s1__nav, .s1__lang {
+  display: none;
+}
+
+.s1__logo {
+  height: 27px;
+  object-fit: contain;
+}
+
+.s1__header-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.s1__btn-small {
+  background: #91FF6A;
+  color: #000;
+  font-size: 14px;
+  font-family: 'Onest', sans-serif;
+  font-weight: 800;
+  padding: 10px 14px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.s1__menu-btn {
+  width: 38px;
+  height: 38px;
+  background: #404040;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.s1__menu-btn span {
+  width: 18px;
+  height: 2px;
+  background: #fff;
+  display: block;
+}
+
+.s1__hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  margin: 40px 0;
+}
+
+.s1__row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+}
+
+.s1__row-text {
+  flex: 1 1 0;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.s1__row-text strong {
+  font-weight: 700;
+}
+
+.s1__row-text--right {
+  text-align: right;
+}
+
+.s1__row-text--left {
+  text-align: left;
+}
+
+.s1__row-pic {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.s1__row-img {
+  width: 100%;
+  height: 82px;
+  object-fit: cover;
+  display: block;
+}
+
+.s1__hero {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.s1__hero-line {
+  font-family: 'Teko', sans-serif;
+  font-size: 65px;
+  font-weight: 700;
+  line-height: 0.85;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.s1__hero-line--light { color: #E6E8DB; }
+.s1__hero-line--green { color: #91FF6A; }
+
+.s1__hero-icon {
+  width: 44px;
+  height: 44px;
+  margin-right: 12px;
+  object-fit: contain;
+}
+
+.s1__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.s1__desc {
+  font-size: 16px;
+  line-height: 1.4;
+  color: #fff;
+  margin: 0;
+}
+
+.s1__desc strong { font-weight: 700; }
+.s1__desc span {
+  color: rgba(255, 255, 255, 0.70);
+  font-weight: 400;
+  display: block;
+  margin-top: 5px;
+}
+
+.s1__btn-large {
+  background: #91FF6A;
+  color: #000;
+  font-size: 20px;
+  font-family: 'Onest', sans-serif;
+  font-weight: 800;
+  padding: 16px 32px;
+  border: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.s1__btn-square {
+  width: 14px;
+  height: 14px;
+  outline: 3px solid #000;
+  outline-offset: -1.5px;
+}
+/* =========================================
+   DESKTOP (від 864px та вище)
+   Усі значення використовують clamp для скейлу до 1440px
+   ========================================= */
+@media (min-width: 864px) {
+  .s1__mobile-br { display: none; }
+
+  /* HERO DESKTOP */
+  .s1__hero-wrapper {
+    min-height: clamp(614.4px, 71.11vw, 924px);
+    padding: clamp(18px, 2.08vw, 30px);
+    position: relative;
+    justify-content: space-between;
+  }
+
+  .s1__header {
+    width: 100%;
+    align-items: center;
+  }
+
+  .s1__logo {
+    height: clamp(18.6px, 2.15vw, 31px);
+  }
+
+  .s1__nav {
+    display: flex;
+    gap: clamp(38.4px, 4.44vw, 64px);
+  }
+
+  .s1__nav-link {
+    color: #fff;
+    font-size: clamp(11.2px, 0.97vw, 14px);
+    font-weight: 300;
+    text-decoration: none;
+  }
+
+  .s1__header-actions {
+    gap: clamp(14.4px, 1.67vw, 24px);
+  }
+
+  .s1__menu-btn { display: none; }
+
+  .s1__lang {
+    display: flex;
+    gap: clamp(2.4px, 0.28vw, 4px);
+    padding: clamp(2.4px, 0.28vw, 4px);
+    outline: 1px solid rgba(255, 255, 255, 0.13);
+    outline-offset: -1px;
+    align-items: center;
+  }
+
+  .s1__lang-item {
+    height: clamp(18.6px, 2.15vw, 31px);
+    padding: clamp(3.6px, 0.42vw, 6px) clamp(6px, 0.69vw, 10px);
+    color: #fff;
+    font-size: clamp(11.2px, 0.97vw, 14px);
+    font-weight: 500;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .s1__lang-item--active {
+    background: #404040;
+  }
+
+  .s1__lang-item:not(.s1__lang-item--active) {
+    opacity: 0.40;
+    border-radius: 100px;
+  }
+
+  .s1__btn-small {
+    padding: clamp(6px, 0.69vw, 10px) clamp(12px, 1.39vw, 20px);
+    font-size: clamp(12.8px, 1.11vw, 16px);
+  }
+
+  .s1__hero-content {
+    margin: 0;
+    gap: clamp(12px, 1.39vw, 20px);
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .s1__row {
+    gap: clamp(14.4px, 1.67vw, 24px);
+  }
+
+  .s1__row-text {
+    font-size: clamp(19.2px, 2.22vw, 32px);
+    line-height: normal;
+  }
+
+  .s1__row-text--right {
+    flex: none;
+    width: clamp(245.4px, 28.4vw, 409px);
+  }
+  
+  .s1__row-text--fixed {
+    flex: none;
+    width: clamp(200.4px, 23.19vw, 334px);
+  }
+
+  .s1__row-pic {
+    flex: 1;
+  }
+
+  .s1__row-img {
+    height: clamp(49.2px, 5.69vw, 82px);
+    width: 100%;
+  }
+
+  .s1__hero-line {
+    font-size: clamp(78px, 9.03vw, 130px);
+    line-height: 1;
+  }
+
+  .s1__hero-icon {
+    width: clamp(31px, 3.6vw, 51.77px);
+    height: clamp(31px, 3.6vw, 51.76px);
+    margin-right: clamp(27px, 3.12vw, 45px);
+  }
+
+  .s1__footer {
+    flex-direction: row;
+    align-items: center;
+    gap: clamp(66px, 7.64vw, 110px);
+    width: clamp(828px, 95.83vw, 1380px);
+    margin: 0 auto;
+  }
+
+  .s1__desc {
+    flex: 1;
+    font-size: clamp(12px, 1.39vw, 20px);
+  }
+
+  .s1__btn-large {
+    width: auto;
+    font-size: clamp(12px, 1.39vw, 20px);
+    padding: clamp(9.6px, 1.11vw, 16px) clamp(19.2px, 2.22vw, 32px);
+  }
+}
