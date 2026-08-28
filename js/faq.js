@@ -1,23 +1,25 @@
-document.querySelectorAll('.s7__question').forEach(question => {
-    question.addEventListener('click', () => {
-        const item = question.parentElement;
-        const answer = question.nextElementSibling;
+document.addEventListener('DOMContentLoaded', () => {
+  // Знаходимо всі кнопки акордеону в блоці .s7
+  const accordionHeads = document.querySelectorAll('.s7__head');
 
-        // Закриваємо інші відкриті питання (опціонально, як акордеон)
-        document.querySelectorAll('.s7__item').forEach(otherItem => {
-            if (otherItem !== item) {
-                otherItem.classList.remove('active');
-                otherItem.querySelector('.s7__answer').style.maxHeight = null;
-            }
-        });
+  accordionHeads.forEach(head => {
+    head.addEventListener('click', () => {
+      // Отримуємо батьківський елемент (.s7__item)
+      const currentItem = head.parentElement;
+      
+      // Перевіряємо, чи поточний елемент вже активний
+      const isActive = currentItem.classList.contains('is-active');
 
-        // Перемикаємо поточне
-        item.classList.toggle('active');
+      // Закриваємо всі питання
+      document.querySelectorAll('.s7__item').forEach(item => {
+        item.classList.remove('is-active');
+      });
 
-        if (item.classList.contains('active')) {
-            answer.style.maxHeight = answer.scrollHeight + "px";
-        } else {
-            answer.style.maxHeight = null;
-        }
+      // Якщо клікнули по неактивному елементу - відкриваємо його
+      // Якщо клікнули по активному, він просто закриється (бо ми вже видалили клас)
+      if (!isActive) {
+        currentItem.classList.add('is-active');
+      }
     });
+  });
 });

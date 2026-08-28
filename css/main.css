@@ -1,6 +1,5 @@
 .s1 {
   width: 100%;
-  max-width: 1440px; /* Фіксуємо максимальну ширину */
   margin: 0 auto;    /* Центруємо на моніторах >1440px */
   display: flex;
   flex-direction: column;
@@ -323,7 +322,6 @@
     flex-direction: row;
     align-items: center;
     gap: clamp(66px, 7.64vw, 110px);
-    width: clamp(828px, 95.83vw, 1380px);
     margin: 0 auto;
   }
 
@@ -336,5 +334,2283 @@
     width: auto;
     font-size: clamp(12px, 1.39vw, 20px);
     padding: clamp(9.6px, 1.11vw, 16px) clamp(19.2px, 2.22vw, 32px);
+  }
+}
+
+
+
+
+
+.s2 {
+  width: 100%;
+  margin: 0 auto -2px auto;
+  background: #fff;
+  box-sizing: border-box;
+  font-family: 'Onest', sans-serif;
+  
+  /* Мобільні відступи (clamp від 320px до 440px) */
+  padding: clamp(32.7px, 10.22vw, 45px) clamp(17.4px, 5.45vw, 24px);
+  
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(17.4px, 5.45vw, 24px);
+}
+
+.s2__item {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.s2__num {
+  text-align: center;
+  color: #57CC2D;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  text-transform: lowercase;
+  
+  /* Мобільні розміри шрифтів (clamp від 320px до 440px) */
+  font-size: clamp(25.4px, 7.95vw, 35px);
+  line-height: clamp(32.7px, 10.22vw, 45px);
+}
+
+.s2__num--uc {
+  text-transform: uppercase;
+}
+
+.s2__text {
+  text-align: center;
+  color: #000;
+  font-weight: 400;
+  
+  /* Мобільні розміри тексту (clamp від 320px до 440px) */
+  font-size: clamp(10.1px, 3.18vw, 14px);
+}
+
+/* Приховуємо перенос рядка на мобільних, оскільки його там немає в дизайні */
+.s2__br-desk {
+  display: none;
+}
+
+
+/* =========================================
+   DESKTOP (від 864px та вище)
+   Усі значення використовують clamp(min@864, vw@1440, max@1440)
+   ========================================= */
+@media (min-width: 864px) {
+  .s2 {
+    background: #FEFEFF;
+    padding: clamp(36px, 4.16vw, 60px) clamp(18px, 2.08vw, 30px);
+    justify-content: space-between;
+    align-items: center;
+    gap: 0; /* Flex space-between розкидає елементи автоматично */
+  }
+
+  .s2__item {
+    flex: unset;
+    flex-direction: row;
+    align-items: center;
+    gap: clamp(8.4px, 0.97vw, 14px); /* Відстань між цифрою і текстом */
+  }
+
+  .s2__num {
+    text-align: left;
+    font-size: clamp(38.4px, 4.44vw, 64px);
+    line-height: normal;
+  }
+
+  .s2__text {
+    text-align: left;
+    opacity: 0.70;
+    font-size: clamp(12px, 1.38vw, 20px);
+  }
+
+  /* Показуємо перенос рядка для десктопу (як у макеті) */
+  .s2__br-desk {
+    display: block;
+  }
+}
+
+
+
+
+
+.s3 {
+  width: 100%;
+  margin: 0 auto;
+  font-family: 'Onest', sans-serif;
+  background-color: #000;
+  box-sizing: border-box;
+  
+  /* Мобільні параметри секції */
+  padding: clamp(32.7px, 10.22vw, 45px) clamp(17.4px, 5.45vw, 24px);
+  background-image: url(../images/fon-m.webp);
+  background-size: contain;
+  background-position: center;
+  background-repeat: repeat-x;
+  max-width: 100% !important; 
+  
+  display: flex;
+  flex-direction: column;
+  gap: clamp(23.2px, 7.27vw, 32px);
+}
+
+/* =========================================
+   HEADER (Мобільний)
+   ========================================= */
+.s3__header {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(5.8px, 1.81vw, 8px);
+}
+
+.s3__title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(5.8px, 1.81vw, 8px);
+}
+
+.s3__tag {
+  color: #fff;
+  opacity: 0.70;
+  font-size: clamp(10.1px, 3.18vw, 14px);
+  text-transform: uppercase;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-self: flex-start;
+}
+
+.s3__title {
+  color: #fff;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: clamp(36.3px, 11.36vw, 50px);
+  line-height: 1;
+}
+
+.s3__desc {
+  color: #fff;
+  font-weight: 400;
+  margin: 0;
+  font-size: clamp(11.6px, 3.63vw, 16px);
+}
+
+/* =========================================
+   GRID & CARDS (Мобільний - Flexbox)
+   ========================================= */
+.s3__grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: clamp(15.2px, 4.77vw, 21px) clamp(5.8px, 1.81vw, 8px);
+}
+
+.s3__card {
+  padding: clamp(17.4px, 5.45vw, 24px) clamp(10.1px, 3.18vw, 14px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(17.4px, 5.45vw, 24px);
+  box-sizing: border-box;
+}
+
+.s3__card--filled { background: rgba(61, 61, 61, 0.62); }
+.s3__card--outline {
+  outline: 1px solid #fff;
+  outline-offset: -1px;
+}
+
+.s3__card-num {
+  color: #fff;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  letter-spacing: clamp(0.93px, 0.29vw, 1.28px);
+  line-height: 1;
+  font-size: clamp(23.2px, 7.27vw, 32px);
+}
+
+.s3__card-content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(5.8px, 1.81vw, 8px);
+}
+
+.s3__card-title {
+  color: #fff;
+  font-weight: 700;
+  margin: 0;
+  font-size: clamp(14.5px, 4.54vw, 20px);
+}
+
+.s3__card-text {
+  color: #fff;
+  opacity: 0.70;
+  font-weight: 400;
+  margin: 0;
+  font-size: clamp(10.1px, 3.18vw, 14px);
+}
+
+.s3__pic {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+}
+
+.s3__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Строге позиціонування під мобільний скрін (image_96f5a1) */
+.s3__card--01 { 
+  width: calc(100% - clamp(68.3px, 21.36vw, 94px) - clamp(5.8px, 1.81vw, 8px)); 
+  flex: none; 
+  order: 1; 
+}
+.s3__pic--1 { 
+  width: clamp(68.3px, 21.36vw, 94px); 
+  flex: none; 
+  order: 2; 
+}
+
+.s3__card--02 { 
+  width: 100%; 
+  flex: none; 
+  order: 3; 
+}
+
+.s3__pic--2 { 
+  width: clamp(108.3px, 33.86vw, 149px); 
+  flex: none; 
+  order: 4; 
+}
+.s3__card--03 { 
+  width: calc(100% - clamp(108.3px, 33.86vw, 149px) - clamp(5.8px, 1.81vw, 8px)); 
+  flex: none; 
+  order: 5; 
+}
+
+/* Віднімаємо рівно половину gap (від clamp(5.8, 1.81vw, 8)) щоб влізло рівно в один ряд */
+.s3__card--04 { 
+  width: calc(50% - clamp(2.9px, 0.905vw, 4px)); 
+  flex: none; 
+  order: 6; 
+}
+.s3__card--05 { 
+  width: calc(50% - clamp(2.9px, 0.905vw, 4px)); 
+  flex: none; 
+  order: 7; 
+}
+
+
+/* =========================================
+   DESKTOP (від 864px та вище - CSS Grid)
+   ========================================= */
+@media (min-width: 864px) {
+  .s3 {
+    padding: clamp(48px, 5.55vw, 80px) clamp(18px, 2.08vw, 30px);
+    background-image: url(../images/fon-d.webp);
+  }
+
+  /* Header Desktop */
+  .s3__header { gap: clamp(8.4px, 0.97vw, 14px); }
+  .s3__title-wrap { gap: clamp(14.4px, 1.66vw, 24px); }
+  .s3__tag { font-size: clamp(9.6px, 1.11vw, 16px); }
+  .s3__title { font-size: clamp(51px, 5.9vw, 85px); }
+  .s3__desc { font-size: clamp(12px, 1.38vw, 20px); }
+
+  /* Grid & Cards Desktop */
+  .s3__card {
+    padding: clamp(19.2px, 2.22vw, 32px);
+    gap: clamp(19.2px, 2.22vw, 32px);
+    width: auto;  /* Скидання мобільних flex-параметрів */
+    flex: none; 
+  }
+
+  .s3__card-num {
+    letter-spacing: clamp(1.44px, 0.16vw, 2.40px);
+    font-size: clamp(36px, 4.16vw, 60px);
+  }
+  .s3__card-title { font-size: clamp(14.4px, 1.66vw, 24px); }
+  .s3__card-text { font-size: clamp(12px, 1.38vw, 20px); }
+  .s3__card-content--w410 { max-width: clamp(246px, 28.47vw, 410px); }
+
+  /* Перемикаємо на Grid для точного відтворення скріну image_8c85b2 */
+  .s3__grid {
+    display: grid;
+    /* 3 колонки: ліва фіксована, центральна тягнеться, права фіксована */
+    grid-template-columns: 
+      clamp(278.4px, 32.22vw, 464px) 
+      1fr                            
+      clamp(155.4px, 17.98vw, 259px);
+    gap: clamp(12.6px, 1.45vw, 21px) clamp(9px, 1.04vw, 15px);
+  }
+
+  /* Ряд 1 */
+  .s3__card--01 { grid-column: 1; grid-row: 1; margin-left: 30%; margin-right: -32%; }
+  .s3__card--02 { grid-column: 2; grid-row: 1; width: 75%; margin-left: auto; }
+  .s3__pic--1   { grid-column: 3; grid-row: 1; width: 100%; height: 100%; }
+  
+  /* Ряд 2 */
+  .s3__card--03 { grid-column: 1; grid-row: 2; }
+  .s3__card--04 { grid-column: 2; grid-row: 2; }
+  /* Третя колонка у другому ряду залишається пустою, як на макеті */
+
+  /* Ряд 3 */
+  .s3__pic--2 { 
+    grid-column: 1; 
+    grid-row: 3;
+    width: clamp(206.4px, 23.88vw, 344px); 
+    justify-self: start;
+  }
+  
+  .s3__card--05 { 
+    /* Розтягуємо з 2 до 3 колонки і притискаємо до правого краю */
+    grid-column: 2 / 4; 
+    grid-row: 3; 
+    justify-self: end;
+    max-width: clamp(336px, 38vw, 560px); 
+  }
+}
+
+
+
+
+
+
+
+.s4 {
+  width: 100%;
+  margin: -2px auto 0 auto;
+  background: #fff;
+  box-sizing: border-box;
+  font-family: 'Onest', sans-serif;
+  
+  /* Мобільні параметри секції */
+  padding: clamp(33.6px, 10.51vw, 45px) clamp(18px, 5.61vw, 24px);
+  
+  /* Grid розкладка для мобілки */
+  display: grid;
+  grid-template-columns: clamp(136.8px, 42.75vw, 183px) 1fr;
+  column-gap: clamp(10.5px, 3.27vw, 14px);
+}
+
+/* =========================================
+   MOBILE FIRST (до 863px)
+   ========================================= */
+.s4__header {
+  grid-column: 1 / -1; /* Займає всі колонки */
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: clamp(18px, 5.61vw, 24px);
+}
+
+.s4__title {
+  font-family: 'Teko', sans-serif;
+  color: #57CC2D;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(37.4px, 11.68vw, 50px);
+  line-height: 1;
+  margin: 0;
+}
+
+.s4__subtitle {
+  font-family: 'Teko', sans-serif;
+  color: #000;
+  font-weight: 700;
+  font-size: clamp(23.9px, 7.47vw, 32px);
+  line-height: 1;
+  margin: 0;
+}
+
+.s4__text {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 1.87vw, 8px);
+  margin-bottom: clamp(6px, 1.87vw, 8px);
+}
+
+.s4__text-p {
+  color: #000;
+  font-size: clamp(12px, 3.73vw, 16px);
+  margin: 0;
+}
+.s4__text-p strong { font-weight: 700; }
+
+.s4__visual {
+  grid-column: 1 / 2; /* Зліва на мобільному */
+  position: relative;
+  width: 100%;
+  height: clamp(251px, 78.5vw, 336px);
+  margin-bottom: clamp(6px, 1.87vw, 8px);
+}
+
+.s4__visual-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.s4__visual-pic, .s4__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 0;
+}
+
+.s4__stats {
+  grid-column: 2 / 3; /* Справа від картинки на мобільному */
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10.5px, 3.27vw, 14px);
+  margin-bottom: clamp(6px, 1.87vw, 8px);
+}
+
+.s4__stat-card {
+  flex: 1;
+  background: rgba(237, 237, 237, 0.29);
+  padding: clamp(6px, 1.87vw, 8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 1.87vw, 8px);
+}
+
+.s4__stat-title {
+  font-size: clamp(9px, 2.8vw, 12px);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #000;
+  text-align: center;
+}
+
+.s4__stat-val {
+  font-size: clamp(12px, 3.73vw, 16px);
+  font-weight: 700;
+  color: #31BB00;
+  text-align: center;
+}
+
+.s4__footer-text {
+  grid-column: 1 / -1;
+  color: #000;
+  font-size: clamp(12px, 3.73vw, 16px);
+  margin: 0;
+}
+.s4__footer-text strong { font-weight: 700; }
+
+/* =========================================
+   DESKTOP (від 864px та вище)
+   ========================================= */
+@media (min-width: 864px) {
+  .s4 {
+    padding: clamp(48px, 5.55vw, 80px) clamp(18px, 2.08vw, 30px);
+    grid-template-columns: clamp(275.4px, 31.87vw, 459px) 1fr;
+    column-gap: clamp(27px, 3.12vw, 45px);
+  }
+  
+  .s4__visual {
+    grid-column: 1 / 2;
+    grid-row: 1 / 5; /* Розтягуємо картинку на всі ряди зліва */
+    height: clamp(451.2px, 52.22vw, 752px);
+    margin-bottom: 0;
+  }
+
+  .s4__header {
+    grid-column: 2 / 3;
+    grid-row: 1;
+    margin-bottom: clamp(19.2px, 2.22vw, 32px);
+  }
+  .s4__title { font-size: clamp(66px, 7.63vw, 110px); }
+  .s4__subtitle { font-size: clamp(51px, 5.9vw, 85px); }
+
+  .s4__text {
+    grid-column: 2 / 3;
+    grid-row: 2;
+    text-align: right;
+    gap: clamp(8.4px, 0.97vw, 14px);
+    margin-bottom: clamp(36px, 4.16vw, 60px);
+  }
+  .s4__text-p { font-size: clamp(12px, 1.38vw, 20px); }
+
+  .s4__stats {
+    grid-column: 2 / 3;
+    grid-row: 3;
+    flex-direction: row; /* На десктопі картки в ряд */
+    gap: clamp(14.4px, 1.66vw, 24px);
+    margin-bottom: clamp(19.2px, 2.22vw, 32px);
+  }
+  
+  .s4__stat-card { padding: clamp(8.4px, 0.97vw, 14px); }
+  .s4__stat-title { font-size: clamp(8.4px, 0.97vw, 14px); }
+  .s4__stat-val { font-size: clamp(12px, 1.38vw, 20px); }
+
+  .s4__footer-text {
+    grid-column: 2 / 3;
+    grid-row: 4;
+    text-align: right;
+    font-size: clamp(12px, 1.38vw, 20px);
+  }
+}
+
+
+
+.s5 {
+  width: 100%;
+  margin: 0 auto;
+  font-family: 'Onest', sans-serif;
+  box-sizing: border-box;
+  background-image: url(../images/fon-o.webp);
+  background-size: cover;
+  background-position: center;
+}
+
+.s5__text-green { color: #91FF6A; }
+
+/* CTA СЕКЦІЯ */
+.s5__cta {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+  padding: clamp(45px, 14vw, 60px) clamp(18px, 5.6vw, 24px) clamp(33.7px, 10.5vw, 45px);
+  gap: clamp(24px, 7.47vw, 32px);
+}
+.s5__cta-header { display: flex; flex-direction: column; align-items: center; gap: clamp(6px, 1.87vw, 8px); width: 100%; }
+.s5__cta-title { color: #fff; font-family: 'Teko', sans-serif; font-weight: 700; text-align: center; margin: 0; font-size: clamp(37.5px, 11.68vw, 50px); line-height: 1; }
+.s5__cta-action { display: flex; flex-direction: column; align-items: center; gap: clamp(24px, 7.47vw, 32px); width: 100%; }
+.s5__cta-desc { color: #fff; font-weight: 400; text-align: center; margin: 0; font-size: clamp(18px, 5.6vw, 24px); }
+
+.s5__btn {
+  background: #91FF6A; color: #000; font-weight: 800; font-family: 'Onest', sans-serif;
+  border: none; cursor: pointer; display: inline-flex; justify-content: center; align-items: center;
+  font-size: clamp(15px, 4.67vw, 20px);
+  padding: clamp(12px, 3.73vw, 16px) clamp(41.2px, 12.85vw, 55px);
+  gap: clamp(10.5px, 3.27vw, 14px);
+  width: 100%;
+}
+.s5__btn-icon { display: flex; align-items: center; justify-content: center; }
+
+/* TIMELINE СЕКЦІЯ */
+.s5__timeline {
+  width: 100%; display: flex; flex-direction: column;
+  background-position: center; background-size: cover; overflow: hidden;
+  padding: clamp(33.7px, 10.5vw, 45px) clamp(18px, 5.6vw, 24px) 70px clamp(18px, 5.6vw, 24px);
+  gap: clamp(24px, 7.47vw, 32px);
+}
+.s5__timeline-info { display: flex; flex-direction: column; gap: clamp(6px, 1.87vw, 8px); }
+.s5__timeline-header { display: flex; flex-direction: column; gap: clamp(6px, 1.87vw, 8px); }
+.s5__timeline-tag { color: #fff; opacity: 0.70; font-size: clamp(10.5px, 3.27vw, 14px); text-transform: uppercase; text-align: left; }
+.s5__timeline-title { color: #fff; font-family: 'Teko', sans-serif; font-weight: 700; margin: 0; font-size: clamp(37.5px, 11.68vw, 50px); line-height: 1; }
+.s5__timeline-desc { color: #fff; opacity: 0.70; font-weight: 400; margin: 0; font-size: clamp(12px, 3.73vw, 16px); }
+
+
+/* =========================================
+   НАТИВНИЙ АКОРДЕОН (Замість Swiper)
+   ========================================= */
+.s5__slider {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.s5__slider-wrapper {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(8px, 2.5vw, 14px);
+  
+  /* Нативний скрол */
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  
+  /* Ховаємо скролбар */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  position: relative;
+}
+.s5__slider-wrapper::-webkit-scrollbar { display: none; }
+
+.s5__card {
+  /* Фіксована висота (як ти просив, щоб не було стрибків) */
+  height: clamp(380px, 90vw, 484px); 
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  outline: 1px solid #fff;
+  outline-offset: -1px;
+  background: transparent;
+  padding: clamp(24px, 7.47vw, 32px);
+  overflow: hidden;
+  cursor: pointer;
+  flex-shrink: 0;
+  
+  /* Неактивний стан */
+  width: clamp(140px, 35vw, 200px);
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Активний стан картки */
+.s5__card.is-active {
+  width: clamp(260px, 75vw, 342px);
+  background: rgba(255, 255, 255, 0.05); /* Легкий підсвіт активного */
+}
+
+.s5__card-head { display: flex; align-items: center; justify-content: flex-start; }
+.s5__card-step { color: #91FF6A; font-weight: 700; text-transform: uppercase; font-size: clamp(12px, 3.73vw, 16px); }
+
+/* Тіло картки */
+.s5__card-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: clamp(18px, 5.6vw, 24px);
+  position: relative;
+}
+
+/* Заголовок. Внизу для неактивних, зверху для активних */
+.s5__card-title {
+  color: #fff; font-weight: 700; margin: 0;
+  font-size: clamp(18px, 4.67vw, 24px);
+  transition: margin 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.s5__card.is-active .s5__card-title {
+  margin-top: 0;
+}
+
+/* Внутрішній текст (Анімація Scale та Opacity) */
+.s5__card-details {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  
+  /* Приховано як камінь */
+  max-height: 0;
+  opacity: 0;
+  transform: scale(0.95);
+  margin: 0;
+  gap: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.3s ease, max-height 0.4s ease, margin 0.4s ease, gap 0.4s ease;
+}
+
+.s5__card.is-active .s5__card-details {
+  /* Розкрито */
+  max-height: 500px;
+  opacity: 1;
+  transform: scale(1);
+  gap: clamp(18px, 5.6vw, 24px);
+  pointer-events: auto;
+  transition: opacity 0.4s ease 0.2s, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s, max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), margin 0.5s cubic-bezier(0.4, 0, 0.2, 1), gap 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.s5__card-block { display: flex; flex-direction: column; gap: clamp(6px, 1.87vw, 8px); }
+.s5__card-block--gap4 { gap: clamp(3px, 0.93vw, 4px); }
+.s5__card-subtitle { color: #fff; font-weight: 700; margin: 0; font-size: clamp(12px, 3.73vw, 16px); }
+.s5__card-text { color: #fff; opacity: 0.70; font-weight: 400; margin: 0; font-size: clamp(12px, 3.73vw, 16px); line-height: 130%; }
+
+/* Картинки. Завжди притиснуті до низу */
+.s5__card-img-wrap {
+  position: relative;
+  width: clamp(90px, 25vw, 120px);
+  height: clamp(28.5px, 8.87vw, 38px);
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: auto; 
+}
+.s5__card.is-active .s5__card-img-wrap {
+  width: clamp(207px, 64.48vw, 276px);
+}
+.s5__card-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* Навігація слайдера (тільки мобайл) */
+.s5__slider-nav {
+  display: flex; align-items: center;
+  gap: clamp(10.5px, 3.27vw, 14px);
+  padding-top: 30px;
+}
+.s5__nav-btn {
+  flex: 1; background: #91FF6A; border: none; display: flex; justify-content: center; align-items: center; cursor: pointer;
+  padding: clamp(7.5px, 2.33vw, 10px) clamp(24px, 7.47vw, 32px);
+}
+.s5__nav-btn svg { width: clamp(18px, 5.6vw, 24px); height: clamp(18px, 5.6vw, 24px); }
+
+
+/* =========================================
+   DESKTOP (від 864px та вище)
+   ========================================= */
+@media (min-width: 864px) {
+  .s5__cta {
+    padding: clamp(75px, 8.68vw, 100px) clamp(18px, 2.08vw, 30px) clamp(45px, 5.2vw, 60px);
+    gap: clamp(10.5px, 1.21vw, 14px);
+    background-image: url(../images/fon-d.webp);
+  }
+  .s5__cta-title { font-size: clamp(61.5px, 7.11vw, 82px); }
+  .s5__cta-action { gap: clamp(24px, 2.77vw, 32px); }
+  .s5__cta-desc { font-size: clamp(18px, 2.08vw, 24px); }
+  .s5__btn { width: auto; font-size: clamp(15px, 1.73vw, 20px); padding: clamp(12px, 1.38vw, 16px) clamp(41.2px, 4.77vw, 55px); }
+
+  .s5__timeline {
+    max-width: 80%;
+    margin: 0 auto;
+    flex-direction: row; align-items: flex-start;
+    padding: clamp(60px, 6.94vw, 80px) clamp(18px, 2.08vw, 30px);
+    gap: clamp(33.7px, 3.9vw, 45px);
+  }
+  .s5__timeline-info { width: clamp(385.5px, 44.61vw, 514px); flex-shrink: 0; justify-content: space-between; gap: clamp(18px, 2.08vw, 24px); }
+  .s5__timeline-header { gap: clamp(18px, 2.08vw, 24px); }
+  .s5__timeline-tag { font-size: clamp(12px, 1.38vw, 16px); }
+  .s5__timeline-title { font-size: clamp(63.7px, 7.37vw, 85px); }
+  .s5__timeline-desc { font-size: clamp(15px, 1.73vw, 20px); }
+
+  /* Ховаємо стрілки навігації на ПК */
+  .s5__slider-nav { display: none; }
+  .s5__slider { flex: 1; min-width: 0; }
+
+  /* Десктопна ширина для карток */
+  .s5__card {
+    width: clamp(160px, 18vw, 200px); /* Неактивний слайд */
+  }
+  .s5__card.is-active {
+    width: clamp(256.5px, 29.68vw, 342px); /* Активний слайд, суворо 342px при 1440 */
+  }
+  
+  /* Десктопні розміри текстів та картинок */
+  .s5__card-subtitle { font-size: clamp(15px, 1.73vw, 20px); }
+  .s5__card-text { font-size: clamp(15px, 1.73vw, 20px); }
+  
+  .s5__card-img-wrap { width: clamp(114px, 13.19vw, 152px); }
+  .s5__card.is-active .s5__card-img-wrap { width: clamp(207px, 24vw, 276px); }
+}
+
+
+
+.br-g{
+  display: none;
+}
+
+
+
+
+.s6 {
+  width: 100%;
+  font-family: 'Onest', sans-serif;
+  background: #FEFEFE;
+  overflow: hidden; /* Щоб фонові тексти карток не вилазили за екран */
+  display: flex;
+  flex-direction: column;
+}
+
+.s6__inner {
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  
+  /* Відступи для мобільної версії */
+  padding: clamp(33.6px, 10.51vw, 45px) clamp(18px, 5.6vw, 24px);
+  gap: clamp(18px, 5.6vw, 24px);
+}
+
+/* =========================================
+   HEADER (Мобільний)
+   ========================================= */
+.s6__header {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 1.87vw, 8px);
+}
+
+.s6__tag {
+  opacity: 0.70;
+  color: #000;
+  font-size: clamp(10.5px, 3.27vw, 14px);
+  text-transform: uppercase;
+  /* На мобайлі по центру, як у згенерованому коді, хоч на скріні зліва. 
+     Робимо зліва для ідеального співпадіння зі скріном. */
+  text-align: left; 
+}
+
+.s6__header-content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 1.87vw, 8px);
+}
+
+.s6__title {
+  color: #57CC2D;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: clamp(37.5px, 11.68vw, 50px);
+  line-height: 1;
+}
+
+.s6__desc {
+  color: #000;
+  font-size: clamp(12px, 3.73vw, 16px);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* =========================================
+   CARDS (Мобільний)
+   ========================================= */
+.s6__cards {
+  display: flex;
+  flex-direction: column;
+}
+
+.s6__card {
+  position: relative;
+  overflow: hidden; /* Обрізає гігантський фоновий текст */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  
+  padding: clamp(18px, 5.6vw, 24px);
+  /* Відступ знизу робимо більшим, щоб вмістити фоновий текст */
+  padding-bottom: clamp(60px, 18.6vw, 80px);
+  gap: clamp(33.7px, 10.51vw, 45px);
+}
+
+.s6__card--black {
+  background: #000;
+}
+
+.s6__card--grey {
+  background: #A4A4A4;
+}
+
+.s6__card-title {
+  color: #fff;
+  font-size: clamp(15px, 4.67vw, 20px);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.s6__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(18px, 5.6vw, 24px);
+  position: relative;
+  z-index: 2;
+}
+
+.s6__item {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(10.5px, 3.27vw, 14px);
+}
+
+.s6__icon {
+  width: clamp(18px, 5.6vw, 24px);
+  height: clamp(18px, 5.6vw, 24px);
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.s6__text {
+  color: #fff;
+  font-size: clamp(12px, 3.73vw, 16px);
+  line-height: 1.4;
+}
+
+/* Гігантський фоновий текст */
+.s6__bg-text {
+  position: absolute;
+  bottom: clamp(-5px, -4.6vw, -10px);
+  color: #FDFDFD;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 0.8;
+  white-space: nowrap;
+  z-index: 1;
+  
+  font-size: clamp(30px, 18.6vw, 40px);
+}
+
+.s6__card--black .s6__bg-text {
+  left: clamp(-5px, -1.5vw, -10px);
+}
+
+.s6__card--grey .s6__bg-text {
+  right: clamp(-5px, -1.5vw, -10px);
+}
+
+/* =========================================
+   TICKER / MARQUEE (Анімована стрічка)
+   ========================================= */
+.s6__ticker {
+  width: 100%;
+  background: #91FF6A;
+  padding: clamp(18px, 5.6vw, 24px) 0;
+  overflow: hidden;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.s6__ticker-track {
+  display: flex;
+  width: max-content;
+  /* 15 секунд на повний цикл, лінійно, нескінченно */
+  animation: s6-scroll 15s linear infinite;
+}
+
+.s6__ticker-group {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 5.6vw, 24px);
+  padding-right: clamp(18px, 5.6vw, 24px); /* Відступ між групами */
+}
+
+.s6__ticker-text {
+  color: #000;
+  font-weight: 700;
+  font-size: clamp(15px, 4.67vw, 20px);
+  white-space: nowrap;
+}
+
+.s6__ticker-icon {
+  height: clamp(22px, 7vw, 30px);
+  object-fit: contain;
+}
+
+.s6__ticker-icon--flip {
+  /* Перевертаємо іконку пальця догори ногами, як в згенерованому HTML */
+  transform: rotate(180deg);
+}
+
+@keyframes s6-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* Зміщуємо рівно на одну групу */
+}
+
+
+/* =========================================
+   DESKTOP (від 864px та вище)
+   ========================================= */
+@media (min-width: 864px) {
+  
+  .s6__inner {
+    padding: clamp(60px, 6.94vw, 80px) clamp(18px, 2.08vw, 30px);
+    gap: clamp(33.7px, 3.9vw, 45px);
+  }
+
+  /* Header Desktop */
+  .s6__header {
+    gap: clamp(18px, 2.08vw, 24px);
+  }
+  
+  .s6__tag {
+    font-size: clamp(12px, 1.38vw, 16px);
+  }
+
+  .s6__header-content {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: clamp(18px, 2.08vw, 24px);
+  }
+
+  .s6__title {
+    flex: 1;
+    font-size: clamp(63.7px, 7.37vw, 85px);
+  }
+
+  .s6__desc {
+    width: clamp(250px, 28.93vw, 333px);
+    text-align: right;
+    font-size: clamp(15px, 1.73vw, 20px);
+  }
+
+  /* Cards Desktop */
+  .s6__cards {
+    flex-direction: row;
+  }
+
+  .s6__card {
+    padding: clamp(24px, 2.77vw, 32px);
+    /* Висота карток фіксується */
+    height: clamp(300px, 34.8vw, 401px);
+    justify-content: flex-start;
+  }
+
+  .s6__card--black {
+    /* На десктопі чорна картка має фіксовану ширину */
+    width: clamp(512px, 59.28vw, 683px);
+    flex-shrink: 0;
+    flex: 1;
+  }
+
+  .br-g{
+    display: block;
+  }
+
+  .s6__card--grey {
+    /* Сіра картка заповнює залишок простору */
+    flex: 1;
+  }
+
+  .s6__card-title {
+    font-size: clamp(18px, 2.08vw, 24px);
+  }
+
+  .s6__item {
+    align-items: center;
+  }
+
+  /* Фоновий текст для десктопу */
+  .s6__bg-text {
+    font-size: clamp(60px, 6.94vw, 80px);
+    bottom: clamp(-15px, -1.73vw, -20px);
+  }
+
+  /* Ticker Desktop */
+  .s6__ticker {
+    padding: clamp(18px, 2.08vw, 24px) 0;
+  }
+
+  .s6__ticker-group {
+    gap: clamp(18px, 2.08vw, 24px);
+    padding-right: clamp(18px, 2.08vw, 24px);
+  }
+
+  .s6__ticker-text {
+    font-size: clamp(15px, 1.73vw, 20px);
+  }
+
+  .s6__ticker-icon {
+    height: clamp(22px, 2.6vw, 30px);
+  }
+}
+
+
+
+
+
+
+.s7 {
+  width: 100%;
+  margin: 0 auto;
+  font-family: 'Onest', sans-serif;
+  background-color: #000;
+  box-sizing: border-box;
+  
+  /* Змінна для акцентного кольору (зелений) */
+  --s7-accent: #91FF6A;
+  
+  display: flex;
+  flex-direction: column;
+  
+  /* Мобільні параметри */
+  padding: clamp(33.7px, 10.51vw, 45px) clamp(18px, 5.6vw, 24px);
+  gap: clamp(24px, 7.47vw, 32px);
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+.s7__title-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.s7__title {
+  color: var(--s7-accent);
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  
+  /* Мобільні розміри */
+  font-size: clamp(37.5px, 11.68vw, 50px);
+  line-height: 1.2; /* 60px на 50px */
+}
+
+/* =========================================
+   ACCORDION LIST
+   ========================================= */
+.s7__list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 7.47vw, 32px);
+  width: 100%;
+}
+
+.s7__item {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid transparent; /* Запобігає стрибкам */
+}
+
+/* Кнопка питання */
+.s7__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(10.5px, 3.27vw, 14px);
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.s7__q {
+  color: #fff;
+  font-weight: 700;
+  margin: 0;
+  flex: 1;
+  font-size: clamp(15px, 4.2vw, 18px);
+}
+
+/* CSS іконка (Плюс / Мінус) */
+.s7__icon {
+  width: clamp(10.5px, 3.27vw, 14px);
+  height: clamp(10.5px, 3.27vw, 14px);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.s7__icon::before,
+.s7__icon::after {
+  content: "";
+  position: absolute;
+  background-color: var(--s7-accent);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Горизонтальна лінія */
+.s7__icon::before {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2.28px;
+  transform: translateY(-50%);
+}
+
+/* Вертикальна лінія (Зникає при відкритті) */
+.s7__icon::after {
+  top: 0;
+  left: 50%;
+  width: 2.28px;
+  height: 100%;
+  transform: translateX(-50%);
+}
+
+.s7__item.is-active .s7__icon::after {
+  transform: translateX(-50%) rotate(90deg);
+  opacity: 0;
+}
+
+/* Відповідь (Прихована за замовчуванням) */
+.s7__body {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
+}
+
+.s7__ans {
+  color: #fff;
+  opacity: 0.70;
+  font-weight: 400;
+  margin: 0;
+  font-size: clamp(12px, 3.73vw, 16px);
+  line-height: 1.4;
+}
+
+/* Відкритий стан */
+.s7__item.is-active .s7__body {
+  max-height: 300px; /* Достатньо для тексту відповіді */
+  opacity: 1;
+  margin-top: clamp(18px, 5.6vw, 24px);
+}
+
+
+/* =========================================
+   DESKTOP (від 864px та вище)
+   ========================================= */
+@media (min-width: 864px) {
+  .s7 {
+    flex-direction: row;
+    align-items: flex-start;
+    
+    /* Зміна акцентного кольору на десктопі за макетом */
+    --s7-accent: #57CC2D;
+    
+    padding: clamp(60px, 5.55vw, 80px) clamp(18px, 2.08vw, 30px);
+    gap: clamp(82.5px, 7.63vw, 110px);
+  }
+
+  .s7__title-wrap {
+    flex-shrink: 0;
+  }
+
+  .s7__title {
+    font-size: clamp(63.7px, 5.9vw, 85px);
+    line-height: 1;
+  }
+
+  .s7__list {
+    flex: 1;
+    min-width: 0;
+    gap: clamp(24px, 2.22vw, 32px);
+  }
+
+  .s7__q {
+    font-size: clamp(15px, 1.38vw, 20px);
+  }
+
+  .s7__icon {
+    width: clamp(10.5px, 0.97vw, 14px);
+    height: clamp(10.5px, 0.97vw, 14px);
+  }
+
+  .s7__list{
+    max-width: 1400px;
+    margin-left: auto;
+    width: 100%;
+  }
+
+  .s7__item.is-active .s7__body {
+    margin-top: clamp(18px, 1.66vw, 24px);
+  }
+
+  .s7__ans {
+    font-size: clamp(12px, 1.11vw, 16px);
+  }
+}
+
+
+
+.s8 {
+  width: 100%;
+  margin: 0 auto;
+  font-family: 'Onest', sans-serif;
+  box-sizing: border-box;
+  background-color: #000;
+  
+  /* Мобільний фон */
+  background-image: url(../images/imgn2.webp);
+  background-size: contain;
+  background-position: center;
+  background-repeat: repeat-x;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  
+  /* Мобільні відступи */
+  padding: clamp(33.7px, 10.51vw, 45px) clamp(18px, 5.6vw, 24px);
+  gap: clamp(24px, 7.47vw, 32px);
+}
+
+.s8__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: clamp(6px, 1.86vw, 8px);
+  width: 100%;
+}
+
+.s8__header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.s8__tag {
+  color: #000;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  
+  /* Мобільні розміри та міжлітерний інтервал */
+  font-size: clamp(24px, 7.47vw, 32px);
+  letter-spacing: clamp(1.44px, 0.44vw, 1.92px);
+}
+
+.s8__title {
+  color: #000;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+  
+  /* Мобільні розміри */
+  font-size: clamp(37.5px, 11.68vw, 50px);
+  line-height: 1;
+}
+
+.s8__desc {
+  color: #000;
+  font-weight: 400;
+  text-align: center;
+  margin: 0;
+  width: 100%;
+  
+  /* Мобільні розміри */
+  font-size: clamp(15px, 4.67vw, 20px);
+  line-height: 1.4;
+}
+
+.s8__btn {
+  background: #000;
+  color: #fff;
+  font-family: 'Onest', sans-serif;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* Мобільні розміри */
+  font-size: clamp(13.5px, 4.2vw, 18px);
+  padding: clamp(12px, 3.73vw, 16px) clamp(24px, 7.47vw, 32px);
+  gap: clamp(10.5px, 3.27vw, 14px);
+}
+
+.s8__btn-icon {
+  width: clamp(10.5px, 3.27vw, 14px);
+  height: clamp(10.5px, 3.27vw, 14px);
+  outline-offset: -1.5px;
+}
+
+/* =========================================
+   DESKTOP (від 864px та вище)
+   ========================================= */
+@media (min-width: 864px) {
+  .s8 {
+    /* Десктопний фон */
+    background-image: url(../images/imgn1.webp);
+    padding: clamp(48px, 5.55vw, 80px) clamp(18px, 2.08vw, 30px);
+  }
+
+  .s8__tag {
+    font-size: clamp(25.2px, 2.91vw, 42px);
+    letter-spacing: clamp(1.5px, 0.17vw, 2.52px);
+  }
+
+  .s8__title {
+    font-size: clamp(49.2px, 5.69vw, 82px);
+  }
+
+  .s8__desc {
+    font-size: clamp(14.4px, 1.66vw, 24px);
+  }
+
+  .s8__btn {
+    font-size: clamp(12px, 1.38vw, 20px);
+    /* Паддінги для кнопки на десктопі зберігають свої пропорції */
+  }
+}
+
+
+
+
+.s9 {
+  width: 100%;
+  background: #000;
+  font-family: 'Onest', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  
+  /* Мобільні відступи (зверху) */
+  padding-top: clamp(33.6px, 10.51vw, 45px);
+}
+
+.s9__inner {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  
+  /* Мобільні відступи всередині */
+  padding: 0 clamp(18px, 5.61vw, 24px);
+  gap: clamp(24px, 7.48vw, 32px);
+  margin-bottom: clamp(24px, 7.48vw, 32px);
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+.s9__header {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10.5px, 3.27vw, 14px);
+  width: 100%;
+}
+
+.s9__header-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(6px, 1.87vw, 8px);
+}
+
+.s9__tag {
+  color: rgba(255, 255, 255, 0.70);
+  font-size: clamp(10.5px, 3.27vw, 14px);
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.s9__title {
+  color: #fff;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: clamp(37.4px, 11.68vw, 50px);
+  line-height: 1;
+}
+
+.s9__desc {
+  color: #fff;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.4;
+  font-size: clamp(12px, 3.74vw, 16px);
+}
+
+/* =========================================
+   ROLES (CARDS)
+   ========================================= */
+.s9__roles {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.s9__roles-title {
+  color: #91FF6A;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin: 0;
+  margin-bottom: clamp(11.2px, 3.5vw, 15px);
+  font-size: clamp(15px, 4.67vw, 20px);
+}
+
+.s9__grid {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(11.2px, 3.5vw, 15px);
+  width: 100%;
+}
+
+.s9__card {
+  background: #000;
+  outline: 1px solid #fff;
+  outline-offset: -1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  
+  /* Мобільні відступи */
+  padding: clamp(18px, 5.61vw, 24px);
+  gap: clamp(24px, 7.48vw, 32px);
+}
+
+.s9__card-top {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 1.87vw, 8px);
+}
+
+.s9__card-header {
+  display: flex;
+  /* На мобільному: іконка і текст в ряд */
+  flex-direction: row;
+  align-items: center;
+  gap: clamp(10.5px, 3.27vw, 14px);
+}
+
+.s9__icon-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #91FF6A;
+  border-radius: 1000px;
+  box-shadow: 0 0 0 clamp(3.7px, 1.16vw, 5px) rgba(145, 255, 106, 0.30);
+  flex-shrink: 0;
+  
+  /* Мобільні розміри (з врахуванням паддінгів з HTML: 30x30 + 12px) */
+  width: clamp(31.5px, 9.81vw, 42px);
+  height: clamp(31.5px, 9.81vw, 42px);
+}
+
+.s9__icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.s9__card-title {
+  color: #fff;
+  font-weight: 700;
+  margin: 0;
+  font-size: clamp(15px, 4.67vw, 20px);
+}
+
+.s9__card-desc {
+  color: #fff;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.4;
+  font-size: clamp(12px, 3.74vw, 16px);
+}
+
+.s9__card-bottom {
+  display: flex;
+  /* На мобільному: текст і кнопка одна під одною */
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(6px, 1.87vw, 8px);
+}
+
+.s9__card-meta {
+  color: #fff;
+  opacity: 0.70;
+  font-weight: 400;
+  font-size: clamp(10.5px, 3.27vw, 14px);
+}
+
+.s9__btn-apply {
+  background: #fff;
+  color: #000;
+  font-family: 'Onest', sans-serif;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* Мобільні розміри */
+  width: 100%;
+  padding: clamp(7.5px, 2.33vw, 10px) clamp(24px, 7.48vw, 32px);
+  gap: clamp(10.5px, 3.27vw, 14px);
+  font-size: clamp(12px, 3.74vw, 16px);
+}
+
+.s9__btn-icon {
+  width: clamp(10.5px, 3.27vw, 14px);
+  height: clamp(10.5px, 3.27vw, 14px);
+  object-fit: contain;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.s9__footer {
+  width: 100%;
+  background: #1E1E1E;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  
+  /* Мобільні відступи */
+  padding: clamp(24px, 7.48vw, 32px) clamp(18px, 5.61vw, 24px);
+}
+
+.s9__footer-inner {
+  width: 100%;
+  max-width: 1440px;
+  display: flex;
+  /* На мобільному: вертикально і по центру */
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(18px, 5.61vw, 24px);
+}
+
+.s9__footer-text-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(6px, 1.87vw, 8px);
+}
+
+.s9__footer-title {
+  color: #fff;
+  font-weight: 700;
+  margin: 0;
+  font-size: clamp(15px, 4.67vw, 20px);
+}
+
+.s9__footer-desc {
+  color: #fff;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.4;
+  font-size: clamp(10.5px, 3.27vw, 14px);
+}
+
+.s9__btn-write {
+  background: #91FF6A;
+  color: #000;
+  font-family: 'Onest', sans-serif;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* Мобільні розміри */
+  width: 100%;
+  padding: clamp(12px, 3.74vw, 16px) clamp(41.2px, 12.8vw, 55px);
+  gap: clamp(10.5px, 3.27vw, 14px);
+  font-size: clamp(15px, 4.67vw, 20px);
+}
+
+/* =========================================
+   DESKTOP (від 864px та вище)
+   ========================================= */
+@media (min-width: 864px) {
+  .s9 {
+    padding-top: clamp(48px, 5.56vw, 80px);
+  }
+
+  .s9__inner {
+    padding: 0 clamp(18px, 2.08vw, 30px);
+    gap: clamp(19.2px, 2.22vw, 32px);
+    margin-bottom: clamp(19.2px, 2.22vw, 32px);
+  }
+
+  .s9__header {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: clamp(36px, 4.16vw, 60px);
+  }
+
+  .s9__header-left {
+    gap: clamp(14.4px, 1.66vw, 24px);
+    width: clamp(457px, 52.9vw, 762px);
+  }
+
+  .s9__tag {
+    text-align: left;
+    font-size: clamp(9.6px, 1.11vw, 16px);
+  }
+
+  .s9__title {
+    font-size: clamp(51px, 5.9vw, 85px);
+  }
+
+  .s9__desc {
+    flex: 1;
+    font-size: clamp(12px, 1.38vw, 20px);
+  }
+
+  .s9__roles-title {
+    font-size: clamp(12px, 1.38vw, 20px);
+  }
+
+  .s9__grid {
+    flex-direction: row;
+    gap: clamp(9px, 1.04vw, 15px);
+  }
+
+  .s9__card {
+    flex: 1;
+    min-width: 0;
+    padding: clamp(19.2px, 2.22vw, 32px);
+    /* Фіксована висота карток для десктопу */
+    height: clamp(240px, 27.7vw, 400px);
+  }
+
+  .s9__card-top {
+    gap: clamp(19.2px, 2.22vw, 32px);
+  }
+
+  .s9__card-header {
+    /* На десктопі: іконка зверху, текст під нею */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(4.8px, 0.55vw, 8px);
+  }
+
+  .s9__icon-wrap {
+    width: clamp(42px, 4.93vw, 71px);
+    height: clamp(42px, 4.93vw, 71px);
+  }
+
+  .s9__card-title {
+    font-size: clamp(14.4px, 1.66vw, 24px);
+  }
+
+  .s9__card-desc {
+    font-size: clamp(12px, 1.38vw, 20px);
+  }
+
+  .s9__card-bottom {
+    /* На десктопі: текст зліва, кнопка справа */
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .s9__card-meta {
+    font-size: clamp(12px, 1.38vw, 20px);
+  }
+
+  .s9__btn-apply {
+    width: auto;
+    font-size: clamp(12px, 1.38vw, 20px);
+  }
+
+  .s9__footer {
+    padding: clamp(25.2px, 2.91vw, 42px) clamp(18px, 2.08vw, 30px);
+  }
+
+  .s9__footer-inner {
+    /* На десктопі: в один рядок */
+    flex-direction: row;
+    justify-content: center;
+    gap: clamp(19.2px, 2.22vw, 32px);
+  }
+
+  .s9__footer-text-wrap {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .s9__footer-title {
+    font-size: clamp(14.4px, 1.66vw, 24px);
+  }
+
+  .s9__footer-desc {
+    font-size: clamp(12px, 1.38vw, 20px);
+  }
+
+  .s9__btn-write {
+    width: auto;
+    /* Специфічні широкі відступи для кнопки Write на ПК */
+    padding: clamp(9.6px, 1.11vw, 16px) clamp(66px, 7.63vw, 110px);
+  }
+}
+
+
+
+
+
+.s10 {
+  width: 100%;
+  background: #000;
+  font-family: 'Onest', sans-serif;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.s10__inner {
+  width: 100%;
+  display: flex;
+  /* На мобайлі текст зверху, форма знизу */
+  flex-direction: column-reverse;
+  
+  padding: clamp(45px, 10.5vw, 60px) clamp(24px, 5.6vw, 30px);
+  gap: clamp(32px, 7.5vw, 45px);
+  box-sizing: border-box;
+}
+
+/* =========================================
+   TEXT COLUMN
+   ========================================= */
+.s10__text-col {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Дефолтний стан тексту */
+.s10__text-default {
+  display: flex;
+  flex-direction: column;
+  /* На мобайлі текст по лівому краю */
+  align-items: flex-start;
+  text-align: left;
+  gap: clamp(8px, 1.8vw, 14px);
+}
+
+.s10__tag {
+  color: rgba(255, 255, 255, 0.70);
+  font-size: clamp(14px, 3.2vw, 16px);
+  text-transform: uppercase;
+}
+
+.s10__title {
+  color: #fff;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: clamp(50px, 11.6vw, 85px);
+  line-height: 1;
+}
+
+.s10__desc {
+  color: #fff;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.4;
+  font-size: clamp(16px, 3.7vw, 20px);
+  max-width: 644px;
+}
+
+/* Стан успіху (прихований за замовчуванням) */
+.s10__text-success {
+  display: none; /* Перемикається через JS */
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: clamp(8px, 1.8vw, 14px);
+}
+
+.s10__success-icon-wrap {
+  width: clamp(50px, 11vw, 71px);
+  height: clamp(50px, 11vw, 71px);
+  background: #91FF6A;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: clamp(4px, 1vw, 8.88px) solid rgba(145, 255, 106, 0.30);
+  margin-bottom: 10px;
+}
+
+.s10__success-img {
+  width: 50%;
+  height: 50%;
+  object-fit: contain;
+}
+
+.s10__link {
+  color: #91FF6A;
+  text-decoration: underline;
+}
+
+/* =========================================
+   FORM COLUMN
+   ========================================= */
+.s10__form-col {
+  width: 100%;
+}
+
+.s10__form {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 3.2vw, 24px);
+}
+
+.s10__form-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* На мобайлі 1 колонка */
+  gap: clamp(14px, 3.2vw, 24px);
+}
+
+.s10__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.s10__label {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.s10__input {
+  background: transparent;
+  border: 1px solid #5C5C5C;
+  color: #fff;
+  font-family: 'Onest', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 14px 20px;
+  outline: none;
+  box-sizing: border-box;
+  width: 100%;
+  transition: border-color 0.3s ease;
+}
+
+.s10__input::placeholder {
+  color: #5C5C5C;
+}
+
+.s10__input:focus {
+  border-color: #91FF6A;
+}
+
+.s10__textarea {
+  resize: none;
+  min-height: 100px; /* Високий інпут як на макеті */
+}
+
+/* Кастомний Select */
+.s10__select {
+  position: relative;
+  background: transparent;
+  border: 1px solid #5C5C5C;
+  padding: 14px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  transition: border-color 0.3s ease;
+}
+
+.s10__select-val {
+  color: #5C5C5C;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.s10__select-val.is-selected {
+  color: #fff; /* Змінюємо колір, коли опція обрана */
+}
+
+.s10__select-arrow {
+  width: 12px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.s10__select.is-open {
+  border-color: #91FF6A;
+}
+
+.s10__select.is-open .s10__select-arrow {
+  transform: rotate(180deg);
+}
+
+/* Випадаючий список */
+.s10__dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: -1px;
+  right: -1px;
+  background: #161616;
+  border: 1px solid #5C5C5C;
+  box-shadow: 0px 12px 41.4px black;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  z-index: 10;
+}
+
+.s10__select.is-open .s10__dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.s10__option {
+  padding: 14px 20px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.s10__option:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Submit Кнопка */
+.s10__btn {
+  background: #91FF6A;
+  color: #000;
+  font-family: 'Onest', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  padding: 16px 55px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+  width: 100%;
+}
+
+.s10__btn.is-success {
+  background: #5E9C47; /* Темно-зелений для стану success */
+  color: #fff;
+}
+
+
+/* =========================================
+   DESKTOP (від 864px та вище)
+   ========================================= */
+@media (min-width: 1000px) {
+  .s10__inner {
+    /* На десктопі повертаємо в горизонтальний ряд. Форма зліва, Текст справа */
+    flex-direction: row;
+    align-items: flex-start;
+    padding: clamp(60px, 6.9vw, 80px) clamp(24px, 2.08vw, 30px);
+  }
+
+  .s10__form-col {
+    width: clamp(450px, 45.5vw, 656px);
+    flex-shrink: 0;
+  }
+
+  .s10__text-col {
+    flex: 1;
+    /* На десктопі текст притиснутий до правого краю */
+    align-items: flex-end;
+  }
+
+  .s10__text-default,
+  .s10__text-success {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .s10__form-grid {
+    /* На десктопі перші 4 поля стають у дві колонки */
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .s10__field--full {
+    grid-column: 1 / -1; /* Textarea розтягується на всю ширину */
+  }
+}
+
+
+
+
+.s11 {
+  width: 100%;
+  background-color: #91FF6A;
+  font-family: 'Onest', sans-serif;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.s11__inner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  
+  /* Відступи для мобільної версії */
+  padding: clamp(41.2px, 12.8vw, 55px) clamp(18px, 5.6vw, 24px);
+  gap: clamp(32px, 10vw, 43px);
+}
+
+/* =========================================
+   TOP SECTION
+   ========================================= */
+.s11__top {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 10vw, 43px);
+  width: 100%;
+}
+
+.s11__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(18px, 5.6vw, 24px);
+}
+
+.s11__slogan {
+  color: #000;
+  margin: 0;
+  font-weight: 400;
+  font-size: clamp(14px, 3.27vw, 16px);
+}
+
+.s11__logo {
+  width: clamp(220px, 60vw, 280px);
+  object-fit: contain;
+  display: block;
+}
+
+/* =========================================
+   NAVIGATION
+   ========================================= */
+.s11__nav {
+  display: flex;
+  /* На мобільному: 3 колонки в один ряд, розподілені по ширині */
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+}
+
+.s11__nav-col {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10.5px, 3.27vw, 14px);
+}
+
+.s11__nav-title {
+  color: #000;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.s11__nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10.5px, 3.27vw, 14px);
+}
+
+.s11__nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Для стрілок на десктопі */
+  gap: 8px;
+}
+
+.s11__nav-link {
+  color: #000;
+  font-size: 14px;
+  font-weight: 300;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.s11__nav-link:hover {
+  opacity: 0.7;
+}
+
+.s11__nav-link--underline {
+  text-decoration: underline;
+}
+
+/* Іконка (стрілка) схована на мобайлі згідно HTML */
+.s11__nav-icon {
+  display: none;
+  width: 9px;
+  height: 9px;
+  object-fit: contain;
+}
+
+/* =========================================
+   BOTTOM SECTION (LEGAL)
+   ========================================= */
+.s11__bottom {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.s11__legal {
+  color: #000;
+  opacity: 0.70;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: right;
+  margin: 0;
+  line-height: 1.4;
+}
+
+
+/* =========================================
+   DESKTOP (від 864px та вище)
+   ========================================= */
+@media (min-width: 864px) {
+  
+  .s11__inner {
+    padding: clamp(50px, 4.65vw, 67px) clamp(18px, 2.08vw, 30px);
+    gap: clamp(32px, 2.98vw, 43px);
+  }
+
+  .s11__top {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .s11__brand {
+    /* На десктопі логотип і слоган знаходяться далеко один від одного по вертикалі */
+    justify-content: space-between;
+    height: clamp(170px, 15.7vw, 227px); /* Вирівнюємо по висоті з блоком навігації */
+  }
+
+  .s11__slogan {
+    font-size: clamp(14px, 1.38vw, 20px);
+  }
+
+  .s11__logo {
+    width: clamp(350px, 41.38vw, 596px);
+  }
+
+  .s11__nav {
+    width: auto;
+    gap: clamp(66px, 7.63vw, 110px); /* Великі відступи між колонками на ПК */
+  }
+
+  .s11__nav-col {
+    gap: clamp(14.4px, 1.66vw, 24px);
+  }
+
+  .s11__nav-list {
+    gap: clamp(8.4px, 0.97vw, 14px);
+  }
+
+  /* На десктопі показуємо стрілки */
+  .s11__nav-icon {
+    display: block;
+  }
+
+  .s11__legal {
+    width: clamp(250px, 28.3vw, 408px); /* Обмеження ширини тексту, як у макеті */
   }
 }
