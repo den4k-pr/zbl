@@ -193,8 +193,6 @@
 .s1__btn-square {
   width: clamp(10.5px, 3.27vw, 14px);
   height: clamp(10.5px, 3.27vw, 14px);
-  outline: 3px solid #000;
-  outline-offset: -1.5px;
 }
 
 /* =========================================
@@ -316,8 +314,8 @@
   }
 
   .s1__hero-icon {
-    width: clamp(31px, 3.6vw, 51.77px);
-    height: clamp(31px, 3.6vw, 51.76px);
+    width: clamp(31px, 7.11vw, 115px);
+    height: clamp(31px, 7.11vw, 115px);
     margin-right: clamp(27px, 3.12vw, 45px);
   }
 
