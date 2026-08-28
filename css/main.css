@@ -13,7 +13,7 @@
    ========================================= */
 .s1__hero-wrapper {
   background: radial-gradient(ellipse 50% 50% at 50% 50%, #1C1C1C 0%, #090909 100%);
-  padding: clamp(33.6px, 10.51vw, 45px) clamp(18px, 5.6vw, 24px);
+  padding: 110px  clamp(18px, 5.6vw, 24px) clamp(33.6px, 10.51vw, 45px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -26,6 +26,15 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0;
+  z-index: 99;
+  padding: 0 clamp(18px, 5.6vw, 24px) ;
+
+  background-color: #000000de;
+  backdrop-filter: blur(10px);
+  height: 80px;
 }
 
 .s1__nav, .s1__lang {
@@ -198,13 +207,175 @@
    DESKTOP (від 864px та вище)
    Усі значення використовують clamp для скейлу до 1440px
    ========================================= */
+
+
+   /* =========================================
+   FULLSCREEN MOBILE MENU
+   ========================================= */
+.s1__mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #91FF6A;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: clamp(33.6px, 10.51vw, 45px) clamp(18px, 5.6vw, 24px);
+  
+  /* Анімація виїзду справа */
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.s1__mobile-menu.is-open {
+  transform: translateX(0);
+}
+
+.s1__mobile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Текстовий логотип з вашого HTML */
+.s1__mobile-brand {
+  position: relative;
+  width: clamp(125.5px, 39.25vw, 168px);
+  height: clamp(23px, 7.24vw, 31px);
+}
+
+.s1__mobile-brand-title {
+  position: absolute;
+  left: clamp(72.5px, 22.66vw, 97px);
+  top: clamp(10.5px, 3.27vw, 14px);
+  color: #000;
+  font-size: clamp(11.6px, 3.64vw, 15.6px);
+  font-family: 'Overpass', sans-serif;
+  letter-spacing: clamp(0.81px, 0.25vw, 1.09px);
+  line-height: 1.25;
+}
+
+.s1__mobile-brand-desc {
+  position: absolute;
+  left: clamp(54.5px, 17.05vw, 73px);
+  top: clamp(7.5px, 2.33vw, 10px);
+  width: clamp(71px, 22.19vw, 95px);
+  color: #000;
+  font-size: clamp(5.4px, 1.68vw, 7.21px);
+  font-family: 'Overpass', sans-serif;
+  font-weight: 300;
+  line-height: 0.9;
+}
+
+.s1__mobile-brand-dot {
+  position: absolute;
+  left: clamp(65px, 20.32vw, 87px);
+  top: clamp(15.7px, 4.9vw, 21px);
+  width: clamp(4.5px, 1.4vw, 6px);
+  height: clamp(5.2px, 1.63vw, 7px);
+  background: #000;
+}
+
+/* Кнопка закриття (Хрестик) */
+.s1__mobile-close {
+  background: #000;
+  border: none;
+  width: clamp(33.6px, 10.51vw, 45px);
+  height: clamp(33.6px, 10.51vw, 45px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.s1__mobile-close span {
+  position: absolute;
+  width: clamp(13.4px, 4.2vw, 18px);
+  height: 2px;
+  background: #fff;
+}
+
+.s1__mobile-close span:nth-child(1) { transform: rotate(45deg); }
+.s1__mobile-close span:nth-child(2) { transform: rotate(-45deg); }
+
+/* Навігація */
+.s1__mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(33.6px, 10.51vw, 45px);
+  width: 100%;
+}
+
+.s1__mobile-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  width: 100%;
+}
+
+.s1__mobile-link-text {
+  color: #000;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  font-size: clamp(30px, 9.34vw, 40px);
+  text-transform: uppercase;
+  line-height: 1.25;
+}
+
+.s1__mobile-link-square {
+  width: clamp(18px, 5.6vw, 24px);
+  height: clamp(18px, 5.6vw, 24px);
+  outline-offset: clamp(-1.5px, -0.46vw, -2px);
+}
+
+/* Перемикач мови */
+.s1__mobile-lang-wrap {
+  display: flex;
+  width: 100%;
+  padding: clamp(3px, 0.93vw, 4px);
+  outline: 1px solid rgba(0, 0, 0, 0.60);
+  outline-offset: -1px;
+  gap: clamp(3px, 0.93vw, 4px);
+  box-sizing: border-box;
+}
+
+.s1__mobile-lang-btn {
+  flex: 1;
+  height: clamp(23px, 7.24vw, 31px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Onest', sans-serif;
+  font-size: clamp(15px, 4.67vw, 20px);
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+}
+
+.s1__mobile-lang-btn--active {
+  background: #000;
+  color: #fff;
+}
+
 @media (min-width: 864px) {
+  .s1__mobile-menu {
+    display: none !important; /* Ховаємо мобільне меню на ПК */
+  }
+
   .s1__mobile-br { display: none; }
 
   /* HERO DESKTOP */
   .s1__hero-wrapper {
     min-height: clamp(614.4px, 65.11vw, 924px);
-    padding: clamp(18px, 2.08vw, 30px);
+    padding: 160px clamp(18px, 2.08vw, 30px) clamp(18px, 2.08vw, 30px) clamp(18px, 2.08vw, 30px);
     position: relative;
     justify-content: space-between;
   }
@@ -212,6 +383,7 @@
   .s1__header {
     width: 100%;
     align-items: center;
+    height: 90px;
   }
 
   .s1__logo {
@@ -437,7 +609,6 @@
 
 
 
-
 .s3 {
   width: 100%;
   margin: 0 auto;
@@ -511,6 +682,14 @@
   gap: clamp(15.2px, 4.77vw, 21px) clamp(5.8px, 1.81vw, 8px);
 }
 
+/* 
+  Робимо так, щоб ряди зникли для Flexbox на мобільному. 
+  Це дозволить мобільним елементам вишукуватись за властивістю order.
+*/
+.s3__row {
+  display: contents; 
+}
+
 .s3__card {
   padding: clamp(17.4px, 5.45vw, 24px) clamp(10.1px, 3.18vw, 14px);
   display: flex;
@@ -568,7 +747,7 @@
   object-fit: cover;
 }
 
-/* Строге позиціонування під мобільний скрін (image_96f5a1) */
+/* Строге позиціонування під мобільний скрін */
 .s3__card--01 { 
   width: calc(100% - clamp(68.3px, 21.36vw, 94px) - clamp(5.8px, 1.81vw, 8px)); 
   flex: none; 
@@ -597,7 +776,7 @@
   order: 5; 
 }
 
-/* Віднімаємо рівно половину gap (від clamp(5.8, 1.81vw, 8)) щоб влізло рівно в один ряд */
+/* Віднімаємо рівно половину gap щоб влізло рівно в один ряд */
 .s3__card--04 { 
   width: calc(50% - clamp(2.9px, 0.905vw, 4px)); 
   flex: none; 
@@ -611,7 +790,7 @@
 
 
 /* =========================================
-   DESKTOP (від 864px та вище - CSS Grid)
+   DESKTOP (від 864px та вище - Чистий Flexbox)
    ========================================= */
 @media (min-width: 864px) {
   .s3 {
@@ -626,12 +805,32 @@
   .s3__title { font-size: clamp(51px, 5.9vw, 85px); }
   .s3__desc { font-size: clamp(12px, 1.38vw, 20px); }
 
-  /* Grid & Cards Desktop */
+  /* Flexbox Grid Desktop */
+  .s3__grid {
+    display: flex;
+    flex-direction: column; /* Сітка стає стовпчиком для 3 рядів */
+    gap: clamp(12.6px, 1.45vw, 21px);
+  }
+
+  /* Повертаємо рядам їхні властивості на ПК */
+  .s3__row {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: clamp(9px, 1.04vw, 15px);
+    width: 100%;
+  }
+
+  /* РОЗПОДІЛ РЯДІВ ЗА ДИЗАЙНОМ */
+  .s3__row--1 { justify-content: flex-end; }       /* Перша полоса строго вправо */
+  .s3__row--2 { justify-content: flex-start; }     /* Друга полоса строго вліво */
+  .s3__row--3 { justify-content: space-between; }  /* Третя розкинута по краях */
+
+  /* Скидання мобільних параметрів для карток */
   .s3__card {
     padding: clamp(19.2px, 2.22vw, 32px);
     gap: clamp(19.2px, 2.22vw, 32px);
-    width: auto;  /* Скидання мобільних flex-параметрів */
-    flex: none; 
+    order: 0 !important; /* Відключаємо мобільний порядок */
   }
 
   .s3__card-num {
@@ -642,45 +841,38 @@
   .s3__card-text { font-size: clamp(12px, 1.38vw, 20px); }
   .s3__card-content--w410 { max-width: clamp(246px, 28.47vw, 410px); }
 
-  /* Перемикаємо на Grid для точного відтворення скріну image_8c85b2 */
-  .s3__grid {
-    display: grid;
-    /* 3 колонки: ліва фіксована, центральна тягнеться, права фіксована */
-    grid-template-columns: 
-      clamp(278.4px, 32.22vw, 464px) 
-      1fr                            
-      clamp(155.4px, 17.98vw, 259px);
-    gap: clamp(12.6px, 1.45vw, 21px) clamp(9px, 1.04vw, 15px);
+  /* ==========================================
+     СТРОГІ ШИРИНИ ПІД ДЕСКТОП (max 473px / 528px)
+     ========================================== */
+  
+  /* Картки 01, 02, 03, 04 - макс 473px на великих екранах */
+  .s3__card--01,
+  .s3__card--02,
+  .s3__card--03,
+  .s3__card--04 { 
+    width: clamp(283px, 32.84vw, 473px); 
+    flex: none; 
   }
 
-  /* Ряд 1 */
-  .s3__card--01 { grid-column: 1; grid-row: 1; margin-left: 30%; margin-right: -32%; }
-  .s3__card--02 { grid-column: 2; grid-row: 1; width: 75%; margin-left: auto; }
-  .s3__pic--1   { grid-column: 3; grid-row: 1; width: 100%; height: 100%; }
-  
-  /* Ряд 2 */
-  .s3__card--03 { grid-column: 1; grid-row: 2; }
-  .s3__card--04 { grid-column: 2; grid-row: 2; }
-  /* Третя колонка у другому ряду залишається пустою, як на макеті */
-
-  /* Ряд 3 */
-  .s3__pic--2 { 
-    grid-column: 1; 
-    grid-row: 3;
-    width: clamp(206.4px, 23.88vw, 344px); 
-    justify-self: start;
-  }
-  
+  /* Картка 05 - макс 528px */
   .s3__card--05 { 
-    /* Розтягуємо з 2 до 3 колонки і притискаємо до правого краю */
-    grid-column: 2 / 4; 
-    grid-row: 3; 
-    justify-self: end;
-    max-width: clamp(336px, 38vw, 560px); 
+    width: clamp(316px, 36.66vw, 528px); 
+    flex: none; 
+  }
+
+  /* Картинки */
+  .s3__pic--1 { 
+    width: clamp(155.4px, 17.98vw, 259px); 
+    flex: none; 
+    order: 0 !important; 
+  }
+  
+  .s3__pic--2 { 
+    width: clamp(206.4px, 23.88vw, 344px); 
+    flex: none; 
+    order: 0 !important; 
   }
 }
-
-
 
 
 
