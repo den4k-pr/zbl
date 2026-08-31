@@ -153,6 +153,23 @@
       s10_btn:    'Get your monetization map',
       s10_thanks: 'Thank you!',
       s10_thanks_desc: 'Your email app should open with the request prefilled. If it didn\'t, write to <a href="mailto:info@zbl.agency" class="s10__link">info@zbl.agency</a>',
+
+      // Contact Page
+      c_tag:        '//contact',
+      c_title:      "let's talk",
+      c_desc:       'Creators, candidates and partners. One address, real people on the other side',
+      c_l_name:     'Your name',
+      c_ph_name:    'Name',
+      c_l_email:    'Email',
+      c_ph_email:   'you@example.com',
+      c_l_social:   'Social',
+      c_ph_social:  'Instagram, LinkedIn, or other',
+      c_l_role:     'I am',
+      c_ph_role:    'A creator, a candidate, something else',
+      c_l_msg:      'Your message',
+      c_ph_msg:     'Your message',
+      c_btn:        'Send',
+      c_success:    '✅ Your message has been sent successfully!'
     },
 
     ua: {
@@ -305,6 +322,23 @@
       s10_btn:    'Отримати карту монетизації',
       s10_thanks: 'Дякуємо!',
       s10_thanks_desc: 'Ваш поштовий клієнт відкриється із заповненою заявкою. Якщо ні — напишіть на <a href="mailto:info@zbl.agency" class="s10__link">info@zbl.agency</a>',
+
+      // Contact Page
+      c_tag:        '//контакти',
+      c_title:      "давай поговоримо",
+      c_desc:       'Кріейтори, кандидати та партнери. Одна адреса, реальні люди по той бік',
+      c_l_name:     "Ваше ім'я",
+      c_ph_name:    "Ім'я",
+      c_l_email:    'Email',
+      c_ph_email:   'you@example.com',
+      c_l_social:   'Соцмережі',
+      c_ph_social:  'Instagram, LinkedIn або інше',
+      c_l_role:     'Я',
+      c_ph_role:    'Кріейтор, кандидат, або хтось інший',
+      c_l_msg:      'Ваше повідомлення',
+      c_ph_msg:     'Ваше повідомлення',
+      c_btn:        'Надіслати',
+      c_success:    '✅ Ваше повідомлення успішно надіслано!'
     }
   };
 
@@ -343,7 +377,6 @@
 
     const heroLines = document.querySelectorAll('.s1__hero-line');
     if (heroLines[0]) {
-      // Зберігаємо перший текстовий нод
       const firstNode = [...heroLines[0].childNodes].find(n => n.nodeType === 3);
       if (firstNode) firstNode.textContent = T.s1_hero_1;
     }
@@ -557,6 +590,37 @@
     const s10ThanksDesc  = document.querySelector('.s10__text-success .s10__desc');
     if (s10ThanksTitle) s10ThanksTitle.textContent = T.s10_thanks;
     if (s10ThanksDesc)  s10ThanksDesc.innerHTML    = T.s10_thanks_desc;
+
+    // Contact Page (c-contact)
+    const cTag   = document.querySelector('.c-contact__tag');
+    const cTitle = document.querySelector('.c-contact__title');
+    const cDesc  = document.querySelector('.c-contact__desc');
+    if (cTag)   cTag.textContent   = T.c_tag;
+    if (cTitle) cTitle.textContent = T.c_title;
+    if (cDesc)  cDesc.textContent  = T.c_desc;
+
+    const cLabels = document.querySelectorAll('.c-contact__label');
+    [[0,'c_l_name'],[1,'c_l_email'],[2,'c_l_social'],[3,'c_l_role'],[4,'c_l_msg']].forEach(([i,k]) => {
+      if (cLabels[i]) cLabels[i].textContent = T[k];
+    });
+
+    const cNameInput   = document.getElementById('cName');
+    const cEmailInput  = document.getElementById('cEmail');
+    const cSocialInput = document.getElementById('cSocial');
+    const cRoleInput   = document.getElementById('cRole');
+    const cMsgInput    = document.getElementById('cMessage');
+
+    if (cNameInput)   cNameInput.placeholder   = T.c_ph_name;
+    if (cEmailInput)  cEmailInput.placeholder  = T.c_ph_email;
+    if (cSocialInput) cSocialInput.placeholder = T.c_ph_social;
+    if (cRoleInput)   cRoleInput.placeholder   = T.c_ph_role;
+    if (cMsgInput)    cMsgInput.placeholder    = T.c_ph_msg;
+
+    const cBtn = document.getElementById('contactSubmitBtn');
+    if (cBtn) cBtn.textContent = T.c_btn;
+
+    const cSuccess = document.getElementById('contactSuccessMsg');
+    if (cSuccess) cSuccess.textContent = T.c_success;
   }
 
   // ── ПЕРЕМИКАЧ ────────────────────────────────────────────────────────────────
