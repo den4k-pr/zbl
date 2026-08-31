@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;700;800&family=Overpass:wght@300;400&family=Teko:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/nullStyle.css">
+    <link rel="stylesheet" href="../css/anim.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>ZBL</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="s1__header">
+      <img class="s1__logo" src="../images/img1.webp" alt="ZBL Company">
+      
+      <!-- Desktop Navigation -->
+      <nav class="s1__nav">
+        <a href="#how_it_works" class="s1__nav-link">How it works</a>
+        <a href="#careers" class="s1__nav-link">Careers</a>
+        <a href="#who_for" class="s1__nav-link">Who it's for</a>
+        <a href="#faq" class="s1__nav-link">FAQ</a>
+        <a href="#company" class="s1__nav-link">Company</a>
+      </nav>
+
+      <div class="s1__header-actions">
+        <!-- Desktop Language Switcher -->
+        <div class="s1__lang">
+          <div class="s1__lang-item s1__lang-item--active">EN</div>
+          <div class="s1__lang-item">ua</div>
+        </div>
+        
+        <button class="s1__btn-small magnetic">Free consultation</button>
+        
+        <!-- Mobile Menu Button -->
+        <button class="s1__menu-btn" id="openMobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+<section class="c-contact">
+  <div class="c-contact__inner">
+    
+    <div class="c-contact__decor">
+      <span class="c-contact__tag">//contact</span>
+      <picture class="c-contact__line-pic">
+        <source media="(min-width: 864px)" srcset="../images/f2.webp">
+        <img src="../images/f1.webp" alt="line" class="c-contact__line-img">
+      </picture>
+    </div>
+
+    <div class="c-contact__content">
+      
+      <div class="c-contact__text-wrap">
+        <h1 class="c-contact__title">let's talk</h1>
+        <p class="c-contact__desc">Creators, candidates and partners. One address, real people on the other side</p>
+      </div>
+
+      <form class="c-contact__form" id="contactForm">
+        
+        <div class="c-contact__form-grid">
+          <div class="c-contact__field">
+            <label class="c-contact__label">Your name</label>
+            <input type="text" class="c-contact__input" id="cName" placeholder="Name" required>
+          </div>
+          
+          <div class="c-contact__field">
+            <label class="c-contact__label">Email</label>
+            <input type="email" class="c-contact__input" id="cEmail" placeholder="you@example.com" required>
+          </div>
+          
+          <div class="c-contact__field">
+            <label class="c-contact__label">Social</label>
+            <input type="text" class="c-contact__input" id="cSocial" placeholder="Instagram, LinkedIn, or other" required>
+          </div>
+          
+          <div class="c-contact__field">
+            <label class="c-contact__label">I am</label>
+            <input type="text" class="c-contact__input" id="cRole" placeholder="A creator, a candidate, something else" required>
+          </div>
+        </div>
+
+        <div class="c-contact__field c-contact__field--full">
+          <label class="c-contact__label">Your message</label>
+          <textarea class="c-contact__input c-contact__textarea" id="cMessage" placeholder="Your message" required></textarea>
+        </div>
+
+        <div class="c-contact__submit-wrap">
+          <button type="submit" class="c-contact__btn" id="contactSubmitBtn">Send</button>
+        </div>
+        
+        <div class="c-contact__success-msg" id="contactSuccessMsg" style="display: none;">
+          ✅ Your message has been sent successfully!
+        </div>
+      </form>
+
+    </div>
+
+    <div class="c-contact__decor c-contact__decor--bottom">
+      <img src="../images/f1.webp" alt="line" class="c-contact__line-img">
+    </div>
+
+  </div>
+</section>
+    </div>
+
+    <script src="../js/form.js"></script>
+    <script src="../js/menu.js"></script>
+    <script src="../js/anim.js"></script>
+    <script src="../js/lang.js"></script>
+</body>
+</html>

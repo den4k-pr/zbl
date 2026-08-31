@@ -1,0 +1,233 @@
+.c-contact {
+  width: 100%;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, #1C1C1C 0%, #090909 100%);
+  font-family: 'Onest', sans-serif;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  
+  /* Мобільна мінімальна висота (щоб заповнювало екран) */
+  min-height: clamp(692px, 216vw, 926px);
+  
+  /* Відступ зверху великий, щоб не перекривало абсолютну шапку */
+  padding: clamp(100px, 20vw, 130px) clamp(24px, 5.6vw, 30px) clamp(45px, 10.5vw, 50px);
+}
+
+.c-contact__inner {
+  width: 100%;
+  max-width: 1380px; /* Трохи менше 1440, як на макеті */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(35px, 8vw, 45px);
+  box-sizing: border-box;
+}
+
+/* =========================================
+   DECOR (ТЕГ + ЛІНІЯ)
+   ========================================= */
+.c-contact__decor {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 3.2vw, 24px);
+  width: 100%;
+}
+
+.c-contact__decor--bottom {
+  display: none; /* Ховаємо нижню лінію на мобайлі */
+}
+
+.c-contact__tag {
+  color: rgba(255, 255, 255, 0.70);
+  font-size: clamp(20px, 4.6vw, 32px);
+  text-transform: uppercase;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.c-contact__line-pic {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+}
+
+.c-contact__line-img {
+  width: 100%;
+  height: clamp(26px, 6vw, 41px); 
+  object-fit: cover;
+  display: block;
+}
+
+/* =========================================
+   TEXT & FORM CONTENT
+   ========================================= */
+.c-contact__content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 6vw, 45px);
+  width: 100%;
+}
+
+.c-contact__text-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.c-contact__title {
+  color: #E6E8DB;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: clamp(65px, 15vw, 130px);
+  line-height: 0.85;
+}
+
+.c-contact__desc {
+  color: #fff;
+  font-weight: 400;
+  margin: 0;
+  margin-top: clamp(8px, 2vw, 12px);
+  font-size: clamp(16px, 3.7vw, 20px);
+  line-height: 1.4;
+  max-width: 600px;
+}
+
+/* Форма */
+.c-contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 3.2vw, 24px);
+  width: 100%;
+}
+
+.c-contact__form-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* На мобайлі 1 колонка */
+  gap: clamp(14px, 3.2vw, 24px);
+}
+
+.c-contact__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.c-contact__label {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.c-contact__input {
+  background: transparent;
+  border: 1px solid #5C5C5C;
+  color: #fff;
+  font-family: 'Onest', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 14px 20px;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.c-contact__input::placeholder {
+  color: #5C5C5C;
+}
+
+.c-contact__input:focus {
+  border-color: #91FF6A;
+}
+
+.c-contact__textarea {
+  resize: none;
+  min-height: clamp(80px, 20vw, 120px);
+}
+
+/* Обгортка для кнопки (щоб позиціонувати на ПК) */
+.c-contact__submit-wrap {
+  display: flex;
+  width: 100%;
+}
+
+.c-contact__btn {
+  background: #91FF6A;
+  color: #000;
+  font-family: 'Onest', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  padding: 16px 55px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, opacity 0.3s ease;
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.c-contact__btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.c-contact__success-msg {
+  color: #91FF6A;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  padding-top: 10px;
+}
+
+
+/* =========================================
+   DESKTOP (від 864px та вище)
+   ========================================= */
+@media (min-width: 864px) {
+  
+  .c-contact {
+    /* Підганяємо відступи під десктопний макет */
+    padding: 176px 30px 50px 30px; 
+    min-height: 100vh;
+  }
+
+  .c-contact__inner {
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  .c-contact__title {
+    line-height: 1; /* Робимо рівніше вирівнювання літер */
+  }
+
+  .c-contact__form-grid {
+    /* МАГІЯ ПК: 4 колонки в один ряд! */
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .c-contact__submit-wrap {
+    /* Кнопка на десктопі притиснута до правого краю */
+    justify-content: flex-end; 
+  }
+
+  .c-contact__btn {
+    width: auto; /* Скидаємо 100% ширину на ПК */
+  }
+
+  .c-contact__decor--bottom {
+    /* Показуємо нижню лінію тільки на ПК */
+    display: flex; 
+  }
+
+  .c-contact__line-img {
+     /* Десктопна висота картинки-лінії */
+     height: clamp(40px, 5vw, 82px);
+  }
+  
+  .c-contact__success-msg {
+    text-align: right;
+  }
+}

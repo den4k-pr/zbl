@@ -32,18 +32,26 @@
 }
 
 .s1__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  position: fixed;
-  top: 0px;
-  left: 0;
-  z-index: 99;
-  padding: 0 clamp(18px, 5.6vw, 24px);
-  background-color: #000000de;
-  backdrop-filter: blur(10px);
-  height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    
+    /* Додаємо box-sizing, щоб висота рахувалася разом з паддінгами */
+    box-sizing: border-box;
+    
+    /* Зверху: системний відступ, по боках: ваш clamp, знизу: 0 */
+    padding: env(safe-area-inset-top) clamp(18px, 5.6vw, 24px) 0;
+    
+    background-color: #000000de;
+    backdrop-filter: blur(10px);
+    
+    /* Загальна висота = ваші 80px + висота "чубчика" iPhone */
+    height: calc(80px + env(safe-area-inset-top));
 }
 
 .s1__nav, .s1__lang {
@@ -181,6 +189,9 @@
   position: relative;
   top: -4px;
   object-fit: contain;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+  cursor: pointer;
 }
 
 .s1__footer {
@@ -242,7 +253,7 @@
   justify-content: space-between;
   box-sizing: border-box;
   padding: clamp(33.6px, 10.51vw, 45px) clamp(18px, 5.6vw, 24px);
-  transform: translateX(100%);
+  transform: translateX(200%);
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -325,7 +336,12 @@
 .s1__mobile-nav {
   display: flex;
   flex-direction: column;
-  gap: clamp(33.6px, 10.51vw, 45px);
+  /* 
+    Змінили vw на dvh (висота екрана). 
+    Мінімальне значення я трохи зменшив (до 20px або 24px), 
+    щоб на маленьких екранах (наприклад, iPhone SE) меню точно влізло по висоті.
+  */
+  gap: clamp(24px, 5dvh, 45px);
   width: 100%;
 }
 
@@ -1107,6 +1123,7 @@
   background-image: url(../images/fon-o.webp);
   background-size: cover;
   background-position: center;
+  overflow: hidden;
 }
 
 .s5__text-green { color: #91FF6A; }
@@ -1190,6 +1207,7 @@
   cursor: pointer;
   flex-shrink: 0;
   
+  
   /* Неактивний стан */
   width: clamp(140px, 35vw, 200px);
   transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1198,7 +1216,7 @@
 /* Активний стан картки */
 .s5__card.is-active {
   width: clamp(260px, 75vw, 342px);
-  background: rgba(255, 255, 255, 0.05); /* Легкий підсвіт активного */
+  background: rgb(0, 0, 0); /* Легкий підсвіт активного */
 }
 
 .s5__card-head { display: flex; align-items: center; justify-content: flex-start; }
@@ -1298,7 +1316,8 @@
   .s5__timeline {
     max-width: 80%;
     margin: 0 auto;
-    flex-direction: row; align-items: flex-start;
+    flex-direction: row; 
+    align-items: flex-start;
     padding: clamp(60px, 6.94vw, 80px) clamp(18px, 2.08vw, 30px);
     gap: clamp(33.7px, 3.9vw, 45px);
   }
@@ -1310,22 +1329,90 @@
 
   /* Ховаємо стрілки навігації на ПК */
   .s5__slider-nav { display: none; }
-  .s5__slider { flex: 1; min-width: 0; }
+  .s5__slider { flex: 1; min-width: 0; overflow: visible; }
 
-  /* Десктопна ширина для карток */
-  .s5__card {
-    width: clamp(160px, 18vw, 200px); /* Неактивний слайд */
+  /* Обгортка: відключаємо стандартний gap, бо відступи робимо через margin */
+  .s5__slider-wrapper {
+    width: 100%; 
+    gap: 0 !important; 
+    transform: none !important; 
   }
-  .s5__card.is-active {
-    width: clamp(256.5px, 29.68vw, 342px); /* Активний слайд, суворо 342px при 1440 */
+
+  /* -------------------------------------
+     БАЗОВИЙ СТАН (Майбутні неактивні картки)
+     ------------------------------------- */
+  .s5__card {
+    /* Цей margin-left працює як gap між картками, 
+       а для пройдених карток — як товщина "корінця", що виглядає зі стопки */
+    margin-left: clamp(15px, 2vw, 25px); 
+    
+    outline: 1px solid rgba(255, 255, 255, 0.4); 
+    outline-offset: -1px;
+    
+    /* ОБОВ'ЯЗКОВО чорний (або інший суцільний) фон, щоб картки перекривали одна одну */
+    background: #000; 
+    position: relative;
+    z-index: 1;
+    
+    width: clamp(150px, 16vw, 220px);
+    transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1), 
+                margin 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+                filter 0.6s ease;
   }
   
-  /* Десктопні розміри текстів та картинок */
+  .s5__card:first-child { 
+    margin-left: 0; 
+  }
+
+  /* Текст внизу для неактивних */
+  .s5__card-title {
+    margin-top: auto; 
+    margin-bottom: clamp(12px, 2vw, 20px);
+    font-size: clamp(18px, 2.5vw, 24px);
+    transition: margin 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .s5__card-img-wrap { 
+    width: clamp(114px, 13.19vw, 152px); 
+    margin-top: 0; 
+  }
+
+  /* -------------------------------------
+     АКТИВНА КАРТКА
+     ------------------------------------- */
+  .s5__card.is-active {
+    width: clamp(280px, 32vw, 380px); 
+    z-index: 5; /* Завжди лежить поверх пройдених */
+  }
+
+  .s5__card.is-active .s5__card-title {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .s5__card.is-active .s5__card-img-wrap { 
+    width: clamp(207px, 24vw, 276px); 
+    margin-top: auto; 
+  }
+
+  /* -------------------------------------
+     ПРОЙДЕНІ КАРТКИ (ЕФЕКТ СТОПКИ)
+     ------------------------------------- */
+  .s5__card.is-passed {
+    /* Геніальний трюк: тягнемо наступну картку вліво рівно на ширину цієї картки. 
+       Оскільки у наступної картки є margin-left, вона не перекриє її на 100%, 
+       а залишить ідеальний тонкий край (корінець) */
+    margin-right: calc(-1 * clamp(150px, 16vw, 190px)) !important;
+    
+    z-index: 0; /* Пройдені картки ховаються під активну */
+    
+    /* Додаємо легке затемнення пройденим карткам для візуальної глибини стопки */
+    filter: brightness(0.6); 
+  }
+
+  /* Розміри текстів */
   .s5__card-subtitle { font-size: clamp(15px, 1.73vw, 20px); }
   .s5__card-text { font-size: clamp(15px, 1.73vw, 20px); }
-  
-  .s5__card-img-wrap { width: clamp(114px, 13.19vw, 152px); }
-  .s5__card.is-active .s5__card-img-wrap { width: clamp(207px, 24vw, 276px); }
 }
 
 
@@ -1352,6 +1439,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  
   
   /* Відступи для мобільної версії */
   padding: clamp(33.6px, 10.51vw, 45px) clamp(18px, 5.6vw, 24px);
@@ -1406,6 +1494,7 @@
 .s6__cards {
   display: flex;
   flex-direction: column;
+  gap: 20px;
 }
 
 .s6__card {
@@ -1531,10 +1620,6 @@
   object-fit: contain;
 }
 
-.s6__ticker-icon--flip {
-  /* Перевертаємо іконку пальця догори ногами, як в згенерованому HTML */
-  transform: rotate(180deg);
-}
 
 @keyframes s6-scroll {
   0% { transform: translateX(0); }
@@ -2185,7 +2270,6 @@
 
 .s9__footer-inner {
   width: 100%;
-  max-width: 1440px;
   display: flex;
   /* На мобільному: вертикально і по центру */
   flex-direction: column;
@@ -2338,7 +2422,7 @@
   .s9__footer-inner {
     /* На десктопі: в один рядок */
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     gap: clamp(19.2px, 2.22vw, 32px);
   }
 
@@ -2471,7 +2555,7 @@
 .s10__form {
   display: flex;
   flex-direction: column;
-  gap: clamp(14px, 3.2vw, 24px);
+  gap: 14px;
 }
 
 .s10__form-grid {
@@ -2613,7 +2697,7 @@
   font-family: 'Onest', sans-serif;
   font-weight: 800;
   font-size: 20px;
-  padding: 16px 55px;
+  padding: 16px 25px;
   border: none;
   cursor: pointer;
   transition: background 0.3s ease, color 0.3s ease;

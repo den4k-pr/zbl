@@ -153,3 +153,31 @@ table {
   /* max-width: 1440px; */
   justify-content: center;
 }
+
+
+/* =========================================
+   MOBILE BUTTON FLASH EFFECT
+   ========================================= */
+/* Застосовуємо ТІЛЬКИ для пристроїв із тачскріном (телефони/планшети) */
+@media (hover: none) {
+  
+  button, 
+  [class*="__btn"] {
+    /* Робимо перехід дуже швидким (0.1с) */
+    transition: background-color 0.1s ease, color 0.1s ease !important;
+    
+    /* Прибираємо стандартне напівпрозоре сіре підсвічування на iOS/Android */
+    -webkit-tap-highlight-color: transparent; 
+  }
+
+  /* Стан у момент самого торкання пальцем */
+  button:active, 
+  [class*="__btn"]:active {
+    background-color: #ffffff !important;
+    color: #000000 !important; /* Текст стає чорним, щоб читався на білому тлі */
+    
+    /* Додаємо легке збільшення або зменшення (за бажанням, можна прибрати) */
+    transform: scale(0.98) !important; 
+  }
+  
+}

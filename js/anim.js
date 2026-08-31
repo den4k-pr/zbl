@@ -1,30 +1,57 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // ЦІЛИМОСЯ САМЕ В НИЖНІЙ БЛОК (з модифікатором --green)
-  const targetElement = document.querySelector('.s1__hero-line--green');
-  if (!targetElement) return;
-
-  // Ваші 4 кольори
-  const colors = ['#91FF6A', '#D9A439', '#30D1E6', '#E630DE'];
+  // ==========================================
+  // 1. АНІМАЦІЯ КОЛЬОРІВ (Скрол)
+  // ==========================================
+  const colorElement = document.querySelector('.s1__hero-line--green');
   
-  // Змінна для збереження поточного індексу кольору
-  let lastColorIndex = -1;
+  if (colorElement) {
+    const colors = ['#91FF6A', '#D9A439', '#30D1E6', '#E630DE'];
+    let colorIndex = 0;
+    let cycleTimer = null;
 
-  window.addEventListener('scroll', () => {
-    // 1. Скільки пікселів проскролено зверху
-    const scrolled = window.scrollY;
-    
-    // 2. Визначаємо поточний крок (кожні 20px)
-    const step = Math.floor(scrolled / 40);
-    
-    // 3. Знаходимо індекс кольору (від 0 до 3)
-    const colorIndex = step % colors.length;
-    
-    // 4. Оновлюємо колір, тільки якщо він змінився
-    if (colorIndex !== lastColorIndex) {
-      targetElement.style.color = colors[colorIndex];
-      lastColorIndex = colorIndex;
+    function startColorCycling() {
+      if (cycleTimer) return; // Вже запущено
+      cycleTimer = setInterval(() => {
+        colorIndex = (colorIndex + 1) % colors.length;
+        colorElement.style.color = colors[colorIndex];
+      }, 200);
     }
-  }, { passive: true });
+
+    function stopColorCycling() {
+      if (!cycleTimer) return;
+      clearInterval(cycleTimer);
+      cycleTimer = null;
+      // За бажанням: можна скинути на дефолтний колір, розкоментувавши рядок нижче
+      // colorElement.style.color = colors[0]; 
+    }
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 0) {
+        startColorCycling(); // Скролимо вниз — крутимо кольори
+      } else {
+        stopColorCycling();  // Дійшли до верху — зупиняємо
+      }
+    }, { passive: true });
+  }
+
+  // ==========================================
+  // 2. АНІМАЦІЯ ІКОНКИ (Обертання щоразу)
+  // ==========================================
+  const iconElement = document.querySelector('.s1__hero-icon');
+  
+  if (iconElement) {
+    let currentAngle = 0;
+
+    const rotateIcon = () => {
+      currentAngle += 360; // Щоразу додаємо 360 градусів
+      iconElement.style.transform = `rotate(${currentAngle}deg)`;
+    };
+
+    // Спрацьовує при наведенні мишкою (ПК)
+    iconElement.addEventListener('mouseenter', rotateIcon);
+    // Спрацьовує при тапі/кліку (Мобайл/ПК)
+    iconElement.addEventListener('click', rotateIcon);
+  }
 });
 
 
@@ -263,3 +290,139 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  // 1. Знаходимо всі елементи списку
+  const s7Items = document.querySelectorAll('.s7__item');
+  if (!s7Items.length) return;
+
+  // 2. Додаємо всім елементам базовий клас для анімації
+  s7Items.forEach(item => item.classList.add('s7__item-anim'));
+
+  // 3. Налаштовуємо Observer
+  const observerOptions = {
+    root: null,
+    // Анімація спрацює, коли елемент з'явиться знизу хоча б на 10%
+    rootMargin: '0px 0px -10% 0px', 
+    threshold: 0
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    // Відбираємо тільки ті елементи, які перетнули межу екрана
+    const visibleEntries = entries.filter(entry => entry.isIntersecting);
+
+    visibleEntries.forEach((entry, index) => {
+      // Додаємо затримку 150мс між появою сусідніх елементів (ефект "драбинки")
+      setTimeout(() => {
+        entry.target.classList.add('is-visible');
+      }, index * 150);
+
+      // Припиняємо стежити за елементом, щоб анімація програлась лише один раз
+      observer.unobserve(entry.target);
+    });
+  }, observerOptions);
+
+  // 4. Запускаємо стеження для кожного елемента
+  s7Items.forEach(item => observer.observe(item));
+});
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const s8Section = document.querySelector('.s8');
+  if (!s8Section) return;
+
+  // 1. Знаходимо всі елементи, які треба анімувати
+  const elementsToAnimate = s8Section.querySelectorAll('.s8__tag, .s8__title, .s8__desc, .s8__btn');
+
+  // 2. Додаємо їм базовий клас скриття
+  elementsToAnimate.forEach(el => el.classList.add('s8-anim'));
+
+  // 3. Налаштовуємо Observer
+  const observerOptions = {
+    root: null,
+    // Анімація спрацює, коли секція перетне нижню межу екрана на 15%
+    rootMargin: '0px 0px -15% 0px', 
+    threshold: 0
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Запускаємо каскадну анімацію для всіх елементів
+        elementsToAnimate.forEach(el => el.classList.add('is-visible'));
+        
+        // Зупиняємо спостереження
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // 4. Починаємо стежити за секцією
+  observer.observe(s8Section);
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll('.s9__card');
+  if (!cards.length) return;
+
+  // Функція для визначення центральної картки
+  const checkCenterCard = () => {
+    // Якщо це ПК (ширина екрана більша за 864px), вимикаємо логіку і прибираємо класи
+    if (window.innerWidth >= 864) {
+      cards.forEach(card => card.classList.remove('is-active'));
+      return;
+    }
+
+    // Знаходимо координату центру видимого вікна (viewport)
+    const viewportCenter = window.innerHeight / 2;
+    
+    let closestCard = null;
+    let minDistance = Infinity;
+
+    // Перевіряємо кожну картку
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      // Знаходимо центр самої картки
+      const cardCenter = rect.top + (rect.height / 2);
+      // Обчислюємо відстань від центру картки до центру екрана
+      const distance = Math.abs(viewportCenter - cardCenter);
+
+      // Якщо ця картка ближче, ніж попередні — запам'ятовуємо її
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestCard = card;
+      }
+    });
+
+    // Додаємо клас найближчій картці, у решти - забираємо
+    cards.forEach(card => {
+      if (card === closestCard) {
+        card.classList.add('is-active');
+      } else {
+        card.classList.remove('is-active');
+      }
+    });
+  };
+
+  // Оптимізація скролу через requestAnimationFrame, щоб не перевантажувати телефон
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        checkCenterCard();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // Також перевіряємо при зміні розміру вікна
+  window.addEventListener('resize', checkCenterCard, { passive: true });
+
+  // Запускаємо один раз при завантаженні сторінки, щоб активувати першу картку, якщо ми вже доскролили
+  checkCenterCard();
+});

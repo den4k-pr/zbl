@@ -1,8 +1,3 @@
-/* =========================================
-   СТАРТОВІ АНІМАЦІЇ (Таймлайн завантаження)
-   ========================================= */
-
-/* 1. Ховаємо елементи до початку їхньої анімації */
 .s1__row--top,
 .s1__row--bottom,
 .s1__hero-line--light,
@@ -11,15 +6,13 @@
 .s1__footer,
 .s1__header {
   opacity: 0;
-  will-change: transform, opacity; /* Оптимізація для плавності браузера */
+  will-change: transform, opacity;
 }
 
-/* 2. Фікс для тексту: scale працює тільки з block/inline-block */
 .s1__hero-line--green > span {
   display: inline-block;
 }
 
-/* 3. Ключові кадри (Самі анімації) */
 @keyframes slideFromRight {
   0% { opacity: 0; transform: translateX(60px); }
   100% { opacity: 1; transform: translateX(0); }
@@ -40,54 +33,35 @@
   100% { opacity: 1; }
 }
 
-/* =========================================
-   РОЗКЛАД ПОЯВИ (Затримки)
-   ========================================= */
-
-/* [0.0s] Верхній рядок: виїжджає справа */
 .s1__row--top {
-  animation: slideFromRight 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: slideFromRight 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-/* [0.0s] Нижній рядок: виїжджає зліва (одночасно з верхнім) */
 .s1__row--bottom {
-  animation: slideFromLeft 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: slideFromLeft 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-/* [0.6s] YOU BRING...: з'являється з легким скейлом після картинок */
 .s1__hero-line--light {
-  animation: fadeScaleIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.6s forwards;
+  animation: fadeScaleIn 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards;
 }
 
-/* [1.0s] WE BUILD...: з'являється після першого тексту */
 .s1__hero-line--green > span {
-  animation: fadeScaleIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 1.0s forwards;
+  animation: fadeScaleIn 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s forwards;
 }
 
-/* [1.4s] Іконка SVG: з'являється в самому кінці */
 .s1__hero-icon {
-  animation: simpleFadeIn 0.6s ease-out 1.4s forwards;
-  
-  /* Додаємо transform до transition, щоб не поламати ваш попередній скрипт на зміну кольору */
+  animation: simpleFadeIn 0.5s ease-out 0.7s forwards;
   transition: color 0.3s ease, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); 
 }
 
-/* [1.8s] Навбар та Футер: плавно проявляються після всього контенту */
 .s1__footer,
 .s1__header {
-  animation: simpleFadeIn 0.8s ease-out 1.8s forwards;
+  animation: simpleFadeIn 0.6s ease-out 0.9s forwards;
 }
 
-/* =========================================
-   ХОВЕР АНІМАЦІЯ (Обертання SVG)
-   ========================================= */
-/* Оскільки в simpleFadeIn ми анімували тільки opacity, 
-   трансформація обертання не буде конфліктувати з появою */
 .s1__hero-icon:hover {
   transform: rotate(360deg);
 }
-
-
 
 
 /* Початковий (прихований) стан для всіх ваших заголовків */
@@ -200,27 +174,81 @@
 
 
 
-
-/* 1. Настраиваем плавность для карточки */
+/* 1. Налаштовуємо плавність для картки */
 .s9__card {
-  /* Задаем плавный переход для трансформации */
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: transform;
 }
 
-/* 2. Эффект при наведении на карточку: небольшое увеличение */
-.s9__card:hover {
-  transform: scale(1.03); /* Увеличиваем на 3%. Можно изменить на 1.02 или 1.05 по вкусу */
+/* 2. Ефект при наведенні (ПК) АБО при додаванні класу (Мобайл) */
+.s9__card:hover,
+.s9__card.is-active {
+  transform: scale(1.03);
 }
 
-/* 3. Настраиваем плавность для иконки */
+/* 3. Налаштовуємо плавність для іконки */
 .s9__icon {
-  /* Время анимации вращения (например, 0.6 сек) */
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
 }
 
-/* 4. При наведении на карточку (.s9__card:hover), вращаем иконку внутри неё */
-.s9__card:hover .s9__icon {
-  transform: rotate(360deg); /* Полный оборот по кругу */
+/* 4. Обертання іконки */
+.s9__card:hover .s9__icon,
+.s9__card.is-active .s9__icon {
+  transform: rotate(360deg);
+}
+
+/* Базовий стан для анімації (прихований, зсунутий вправо) */
+.s7__item-anim {
+  opacity: 0;
+  transform: translateX(60px); /* Зсув вправо на 60 пікселів */
+  transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1), 
+              transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+
+/* Стан, коли елемент з'являється на екрані (видимий, на своєму місці) */
+.s7__item-anim.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+
+
+/* Базовий стан для анімації елементів у секції 8 */
+.s8-anim {
+  opacity: 0;
+  transform: translateY(30px); /* Елементи злегка опущені вниз */
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+              transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+
+/* Стан, коли секція потрапляє на екран */
+.s8-anim.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- ПОСЛІДОВНІСТЬ (Затримки) --- */
+
+/* 1. Тег з'являється першим (без затримки) */
+.s8__tag.s8-anim.is-visible { 
+  transition-delay: 0s; 
+}
+
+/* 2. Заголовок одразу за ним */
+.s8__title.s8-anim.is-visible { 
+  transition-delay: 0.2s; 
+}
+
+/* 3. Текст під заголовком */
+.s8__desc.s8-anim.is-visible { 
+  transition-delay: 0.4s; 
+}
+
+/* 4. Кнопка з'являється найостаннішою */
+.s8__btn.s8-anim.is-visible { 
+  transition-delay: 0.7s; 
 }
