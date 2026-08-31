@@ -85,7 +85,6 @@
       <div class="s1__mobile-lang-btn">ua</div>
     </div>
   </div>
-
 <section class="c-contact">
   <div class="c-contact__inner">
     
@@ -100,8 +99,17 @@
     <div class="c-contact__content">
       
       <div class="c-contact__text-wrap">
-        <h1 class="c-contact__title">let's talk</h1>
-        <p class="c-contact__desc">Creators, candidates and partners. One address, real people on the other side</p>
+        
+        <div class="c-contact__text-default" id="cDefaultText">
+          <h1 class="c-contact__title">let's talk</h1>
+          <p class="c-contact__desc">Creators, candidates and partners. One address, real people on the other side</p>
+        </div>
+
+        <div class="c-contact__text-success" id="cSuccessText" style="display: none;">
+          <h1 class="c-contact__title">Thank you!</h1>
+          <p class="c-contact__desc">Your email app should open with the request prefilled. If it didn't, write to <a href="mailto:info@zbl.agency" class="c-contact__link">info@zbl.agency</a></p>
+        </div>
+
       </div>
 
       <form class="c-contact__form" id="contactForm">
@@ -137,9 +145,6 @@
           <button type="submit" class="c-contact__btn" id="contactSubmitBtn">Send</button>
         </div>
         
-        <div class="c-contact__success-msg" id="contactSuccessMsg" style="display: none;">
-          ✅ Your message has been sent successfully!
-        </div>
       </form>
 
     </div>

@@ -100,6 +100,14 @@
       s6_not_2:      "You don't want to keep making content",
       s6_not_3:      'You have an audience but no method yet',
 
+      // В блоці "en" (англійська)
+c_thanks: 'Thank you!',
+c_thanks_desc: 'Your email app should open with the request prefilled. If it didn\'t, write to <a href="mailto:info@zbl.agency" class="c-contact__link">info@zbl.agency</a>',
+
+// В блоці "ua" (українська)
+c_thanks: 'Дякуємо!',
+c_thanks_desc: 'Ваш поштовий клієнт відкриється із заповненою заявкою. Якщо ні — напишіть на <a href="mailto:info@zbl.agency" class="c-contact__link">info@zbl.agency</a>',
+
       // S7 FAQ
       s7_title: 'FAQ',
       s7_q1: 'Will I lose control of my brand?',
@@ -458,6 +466,13 @@
     if (s4stat_t[2]) s4stat_t[2].textContent = T.s4_stat3_title;
     if (s4stat_v[2]) s4stat_v[2].innerHTML   = T.s4_stat3_val;
     if (s4footer)    s4footer.innerHTML      = T.s4_footer;
+
+    // Одразу під наявним блоком Contact Page (c-contact) в lang.js:
+const cThanksTitle = document.querySelector('#cSuccessText .c-contact__title');
+const cThanksDesc  = document.querySelector('#cSuccessText .c-contact__desc');
+
+if (cThanksTitle) cThanksTitle.textContent = T.c_thanks;
+if (cThanksDesc)  cThanksDesc.innerHTML    = T.c_thanks_desc;
 
     // S5 CTA
     const s5ctaTitle = document.querySelector('.s5__cta-title');

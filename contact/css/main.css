@@ -231,3 +231,32 @@
     text-align: right;
   }
 }
+
+
+
+/* Перемикання станів тексту */
+.c-contact__text-default,
+.c-contact__text-success {
+  display: flex;
+  flex-direction: column;
+}
+
+.c-contact__link {
+  color: #91FF6A;
+  text-decoration: underline;
+}
+
+/* Стан успішної відправки для форми */
+.c-contact__form {
+  transition: opacity 0.4s ease; /* Плавно змінюємо прозорість */
+}
+
+.c-contact__form.is-success {
+  opacity: 0.55;
+  pointer-events: none; /* Відключаємо можливість клікати/редагувати форму після відправки */
+}
+
+/* Кнопка у стані Success (за бажанням, можна трохи змінити колір, але за макетом вона зелена) */
+.c-contact__btn.is-success {
+  text-transform: uppercase;
+}
