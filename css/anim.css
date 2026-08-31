@@ -1,0 +1,226 @@
+/* =========================================
+   СТАРТОВІ АНІМАЦІЇ (Таймлайн завантаження)
+   ========================================= */
+
+/* 1. Ховаємо елементи до початку їхньої анімації */
+.s1__row--top,
+.s1__row--bottom,
+.s1__hero-line--light,
+.s1__hero-line--green > span,
+.s1__hero-icon,
+.s1__footer,
+.s1__header {
+  opacity: 0;
+  will-change: transform, opacity; /* Оптимізація для плавності браузера */
+}
+
+/* 2. Фікс для тексту: scale працює тільки з block/inline-block */
+.s1__hero-line--green > span {
+  display: inline-block;
+}
+
+/* 3. Ключові кадри (Самі анімації) */
+@keyframes slideFromRight {
+  0% { opacity: 0; transform: translateX(60px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideFromLeft {
+  0% { opacity: 0; transform: translateX(-60px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeScaleIn {
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes simpleFadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* =========================================
+   РОЗКЛАД ПОЯВИ (Затримки)
+   ========================================= */
+
+/* [0.0s] Верхній рядок: виїжджає справа */
+.s1__row--top {
+  animation: slideFromRight 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* [0.0s] Нижній рядок: виїжджає зліва (одночасно з верхнім) */
+.s1__row--bottom {
+  animation: slideFromLeft 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* [0.6s] YOU BRING...: з'являється з легким скейлом після картинок */
+.s1__hero-line--light {
+  animation: fadeScaleIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.6s forwards;
+}
+
+/* [1.0s] WE BUILD...: з'являється після першого тексту */
+.s1__hero-line--green > span {
+  animation: fadeScaleIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 1.0s forwards;
+}
+
+/* [1.4s] Іконка SVG: з'являється в самому кінці */
+.s1__hero-icon {
+  animation: simpleFadeIn 0.6s ease-out 1.4s forwards;
+  
+  /* Додаємо transform до transition, щоб не поламати ваш попередній скрипт на зміну кольору */
+  transition: color 0.3s ease, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+/* [1.8s] Навбар та Футер: плавно проявляються після всього контенту */
+.s1__footer,
+.s1__header {
+  animation: simpleFadeIn 0.8s ease-out 1.8s forwards;
+}
+
+/* =========================================
+   ХОВЕР АНІМАЦІЯ (Обертання SVG)
+   ========================================= */
+/* Оскільки в simpleFadeIn ми анімували тільки opacity, 
+   трансформація обертання не буде конфліктувати з появою */
+.s1__hero-icon:hover {
+  transform: rotate(360deg);
+}
+
+
+
+
+/* Початковий (прихований) стан для всіх ваших заголовків */
+.s3__header,
+.s5__timeline-header,
+.s6__header,
+.s9__header-left,
+.s10__text-default {
+  opacity: 0;
+  transform: translateY(30px); /* Зсув вниз, щоб потім виїхати вгору */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform; /* Оптимізація для браузера */
+}
+
+/* Стан після появи на екрані (цей клас додасть JavaScript) */
+.s3__header.is-visible,
+.s5__timeline-header.is-visible,
+.s6__header.is-visible,
+.s9__header-left.is-visible,
+.s10__text-default.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+
+
+
+
+
+
+
+/* Початковий стан для карток та картинок */
+.fade-element {
+  opacity: 0;
+  transform: translateY(40px);
+  /* Плавний перехід для прозорості та позиції */
+  transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1), 
+              transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+
+/* Стан, коли елемент потрапляє у видиму зону екрана */
+.fade-element.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+
+
+
+/* Базовое состояние для всех анимируемых элементов секции */
+.s4-anim {
+  opacity: 0;
+  will-change: opacity, transform;
+  /* Плавный переход длительностью 0.8 сек */
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+              transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Мягкое смещение для текста и заголовков */
+.s4__title.s4-anim,
+.s4__subtitle.s4-anim,
+.s4__text.s4-anim,
+.s4__stats.s4-anim,
+.s4__footer-text.s4-anim {
+  transform: translateY(30px);
+}
+
+/* Скриншот выезжает снизу с большего расстояния, чтобы подчеркнуть эффект */
+.s4__visual.s4-anim {
+  transform: translateY(100px);
+}
+
+/* Состояние, когда секция появляется на экране */
+.s4-anim.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- ПОСЛЕДОВАТЕЛЬНОСТЬ (ЗАДЕРЖКИ) --- */
+
+/* 1. Слово Zubalenok появляется первым (без задержки) */
+.s4__title.s4-anim.is-visible { 
+  transition-delay: 0s; 
+}
+
+/* 2. Сразу после него — подзаголовок */
+.s4__subtitle.s4-anim.is-visible { 
+  transition-delay: 0.3s; 
+}
+
+/* 3. Текст и скриншот появляются одновременно после подзаголовка */
+.s4__text.s4-anim.is-visible,
+.s4__visual.s4-anim.is-visible { 
+  transition-delay: 0.6s; 
+}
+
+/* (Дополнительно) Статистика и футер появляются в самом конце */
+.s4__stats.s4-anim.is-visible { 
+  transition-delay: 1s; 
+}
+.s4__footer-text.s4-anim.is-visible { 
+  transition-delay: 1.2s; 
+}
+
+
+
+
+
+/* 1. Настраиваем плавность для карточки */
+.s9__card {
+  /* Задаем плавный переход для трансформации */
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+/* 2. Эффект при наведении на карточку: небольшое увеличение */
+.s9__card:hover {
+  transform: scale(1.03); /* Увеличиваем на 3%. Можно изменить на 1.02 или 1.05 по вкусу */
+}
+
+/* 3. Настраиваем плавность для иконки */
+.s9__icon {
+  /* Время анимации вращения (например, 0.6 сек) */
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+/* 4. При наведении на карточку (.s9__card:hover), вращаем иконку внутри неё */
+.s9__card:hover .s9__icon {
+  transform: rotate(360deg); /* Полный оборот по кругу */
+}

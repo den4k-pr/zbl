@@ -1,19 +1,29 @@
 .s1 {
   width: 100%;
-  margin: 0 auto;    /* Центруємо на моніторах >1440px */
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   font-family: 'Onest', sans-serif;
   background-color: #000;
 }
 
-/* =========================================
-   MOBILE FIRST (від 320px до 863px) 
-   Усі значення використовують clamp(val@320, vw@428, val@428)
-   ========================================= */
+/* Базовий клас для елементів-магнітів */
+.magnetic {
+  display: inline-block; /* Або flex/block, головне щоб елемент мав фізичні розміри */
+  will-change: transform;
+  /* Плавне повернення з ефектом легкого відскоку */
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Цей клас додається через JS, коли курсор рухається по елементу. 
+   Ми прискорюємо транзишн, щоб елемент не "відставав" від курсора */
+.magnetic.is-moving {
+  transition: transform 0.1s ease-out;
+}
+
 .s1__hero-wrapper {
   background: radial-gradient(ellipse 50% 50% at 50% 50%, #1C1C1C 0%, #090909 100%);
-  padding: 110px  clamp(18px, 5.6vw, 24px) clamp(33.6px, 10.51vw, 45px);
+  padding: 110px clamp(18px, 5.6vw, 24px) clamp(33.6px, 10.51vw, 45px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -30,8 +40,7 @@
   top: 0px;
   left: 0;
   z-index: 99;
-  padding: 0 clamp(18px, 5.6vw, 24px) ;
-
+  padding: 0 clamp(18px, 5.6vw, 24px);
   background-color: #000000de;
   backdrop-filter: blur(10px);
   height: 80px;
@@ -134,9 +143,9 @@
 }
 
 .s1__hero {
-  display: flex;
-  flex-direction: column;
+  display: block;
   width: 100%;
+  position: relative;
 }
 
 .s1__hero-line {
@@ -145,18 +154,32 @@
   font-weight: 700;
   line-height: 0.85;
   text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+  display: inline;
+  transition: color 0.3s ease;
 }
 
-.s1__hero-line--light { color: #E6E8DB; }
-.s1__hero-line--green { color: #91FF6A; }
+.s1__hero-line--light {
+  color: #E6E8DB;
+}
+
+.s1__hero-line--green {
+  color: #91FF6A;
+  transition: color 0.3s ease;
+}
+
+.s1__hero-line--green span {
+  display: block;
+}
 
 .s1__hero-icon {
   width: clamp(33px, 10.28vw, 44px);
   height: clamp(33px, 10.28vw, 44px);
-  margin-right: clamp(9px, 2.8vw, 12px);
+  margin-left: clamp(6px, 2vw, 12px);
+  margin-right: 0;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  top: -4px;
   object-fit: contain;
 }
 
@@ -174,7 +197,10 @@
   margin: 0;
 }
 
-.s1__desc strong { font-weight: 700; }
+.s1__desc strong {
+  font-weight: 700;
+}
+
 .s1__desc span {
   color: rgba(255, 255, 255, 0.70);
   font-weight: 400;
@@ -203,15 +229,6 @@
   height: clamp(10.5px, 3.27vw, 14px);
 }
 
-/* =========================================
-   DESKTOP (від 864px та вище)
-   Усі значення використовують clamp для скейлу до 1440px
-   ========================================= */
-
-
-   /* =========================================
-   FULLSCREEN MOBILE MENU
-   ========================================= */
 .s1__mobile-menu {
   position: fixed;
   top: 0;
@@ -225,8 +242,6 @@
   justify-content: space-between;
   box-sizing: border-box;
   padding: clamp(33.6px, 10.51vw, 45px) clamp(18px, 5.6vw, 24px);
-  
-  /* Анімація виїзду справа */
   transform: translateX(100%);
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -242,7 +257,6 @@
   width: 100%;
 }
 
-/* Текстовий логотип з вашого HTML */
 .s1__mobile-brand {
   position: relative;
   width: clamp(125.5px, 39.25vw, 168px);
@@ -281,7 +295,6 @@
   background: #000;
 }
 
-/* Кнопка закриття (Хрестик) */
 .s1__mobile-close {
   background: #000;
   border: none;
@@ -301,10 +314,14 @@
   background: #fff;
 }
 
-.s1__mobile-close span:nth-child(1) { transform: rotate(45deg); }
-.s1__mobile-close span:nth-child(2) { transform: rotate(-45deg); }
+.s1__mobile-close span:nth-child(1) {
+  transform: rotate(45deg);
+}
 
-/* Навігація */
+.s1__mobile-close span:nth-child(2) {
+  transform: rotate(-45deg);
+}
+
 .s1__mobile-nav {
   display: flex;
   flex-direction: column;
@@ -335,7 +352,6 @@
   outline-offset: clamp(-1.5px, -0.46vw, -2px);
 }
 
-/* Перемикач мови */
 .s1__mobile-lang-wrap {
   display: flex;
   width: 100%;
@@ -367,12 +383,13 @@
 
 @media (min-width: 864px) {
   .s1__mobile-menu {
-    display: none !important; /* Ховаємо мобільне меню на ПК */
+    display: none !important;
   }
 
-  .s1__mobile-br { display: none; }
+  .s1__mobile-br {
+    display: none;
+  }
 
-  /* HERO DESKTOP */
   .s1__hero-wrapper {
     min-height: clamp(614.4px, 65.11vw, 924px);
     padding: 160px clamp(18px, 2.08vw, 30px) clamp(18px, 2.08vw, 30px) clamp(18px, 2.08vw, 30px);
@@ -400,13 +417,20 @@
     font-size: clamp(11.2px, 0.97vw, 14px);
     font-weight: 300;
     text-decoration: none;
+    transition: all .3s;
+  }
+
+  .s1__nav-link:hover{
+    color: #91FF6A;
   }
 
   .s1__header-actions {
     gap: clamp(14.4px, 1.67vw, 24px);
   }
 
-  .s1__menu-btn { display: none; }
+  .s1__menu-btn {
+    display: none;
+  }
 
   .s1__lang {
     display: flex;
@@ -446,8 +470,9 @@
 
   .s1__hero-content {
     margin: 0;
-    gap: clamp(12px, 1.39vw, 20px);
+    gap: clamp(20px, calc(9.55vw - 62.5px), 75px);
     width: 100%;
+    height: 100%;
     align-items: flex-start;
   }
 
@@ -464,7 +489,7 @@
     flex: none;
     width: clamp(245.4px, 28.4vw, 409px);
   }
-  
+
   .s1__row-text--fixed {
     flex: none;
     width: clamp(200.4px, 23.19vw, 334px);
@@ -479,15 +504,30 @@
     width: 100%;
   }
 
+  .s1__hero {
+    display: flex;
+    flex-direction: column;
+  }
+
   .s1__hero-line {
     font-size: clamp(78px, 9.03vw, 130px);
     line-height: 1;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .s1__hero-line--green span {
+    display: inline;
   }
 
   .s1__hero-icon {
     width: clamp(31px, 7.11vw, 115px);
     height: clamp(31px, 7.11vw, 115px);
+    margin-left: 0;
     margin-right: clamp(27px, 3.12vw, 45px);
+    display: block;
+    top: 0;
   }
 
   .s1__footer {
@@ -508,8 +548,6 @@
     padding: clamp(9.6px, 1.11vw, 16px) clamp(19.2px, 2.22vw, 32px);
   }
 }
-
-
 
 
 
@@ -538,6 +576,7 @@
 }
 
 .s2__num {
+  font-variant-numeric: tabular-nums;
   text-align: center;
   color: #57CC2D;
   font-family: 'Teko', sans-serif;
@@ -1120,6 +1159,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  overflow: hidden; /* Ховаємо все, що вилазить за межі контейнера */
 }
 
 .s5__slider-wrapper {
@@ -1127,14 +1167,12 @@
   align-items: stretch;
   gap: clamp(8px, 2.5vw, 14px);
   
-  /* Нативний скрол */
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  
-  /* Ховаємо скролбар */
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  /* ТУТ ГОЛОВНА ЗМІНА: Забираємо скрол, робимо ширину під контент */
+  width: max-content; 
   position: relative;
+  
+  /* Анімація зсуву треку має співпадати з анімацією ширини картки (0.5s) */
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .s5__slider-wrapper::-webkit-scrollbar { display: none; }
 
@@ -1255,7 +1293,7 @@
   .s5__cta-title { font-size: clamp(61.5px, 7.11vw, 82px); }
   .s5__cta-action { gap: clamp(24px, 2.77vw, 32px); }
   .s5__cta-desc { font-size: clamp(18px, 2.08vw, 24px); }
-  .s5__btn { width: auto; font-size: clamp(15px, 1.73vw, 20px); padding: clamp(12px, 1.38vw, 16px) clamp(41.2px, 4.77vw, 55px); }
+  .s5__btn { width: 100%; font-size: clamp(15px, 1.73vw, 20px); padding: clamp(12px, 1.38vw, 16px) clamp(41.2px, 4.77vw, 55px); }
 
   .s5__timeline {
     max-width: 80%;
@@ -2327,7 +2365,6 @@
 
 
 
-
 .s10 {
   width: 100%;
   background: #000;
@@ -2473,8 +2510,15 @@
   color: #5C5C5C;
 }
 
-.s10__input:focus {
-  border-color: #91FF6A;
+/* При наведенні */
+.s10__input:hover {
+  border-color: #fff;
+}
+
+/* При фокусі або коли користувач вже щось надрукував (placeholder зникає) */
+.s10__input:focus,
+.s10__input:not(:placeholder-shown) {
+  border-color: #fff;
 }
 
 .s10__textarea {
@@ -2496,6 +2540,11 @@
   transition: border-color 0.3s ease;
 }
 
+/* При наведенні на кастомний селект */
+.s10__select:hover {
+  border-color: #fff;
+}
+
 .s10__select-val {
   color: #5C5C5C;
   font-size: 16px;
@@ -2512,8 +2561,9 @@
   transition: transform 0.3s ease;
 }
 
+/* Коли селект відкритий */
 .s10__select.is-open {
-  border-color: #91FF6A;
+  border-color: #fff;
 }
 
 .s10__select.is-open .s10__select-arrow {
@@ -2806,3 +2856,6 @@
     width: clamp(250px, 28.3vw, 408px); /* Обмеження ширини тексту, як у макеті */
   }
 }
+
+
+

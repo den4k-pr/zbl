@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;700;800&family=Overpass:wght@300;400&family=Teko:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/nullStyle.css">
+    <link rel="stylesheet" href="./css/anim.css">
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <title>ZBL</title>
@@ -35,7 +36,7 @@
           <div class="s1__lang-item">ua</div>
         </div>
         
-        <button class="s1__btn-small">Free consultation</button>
+        <button class="s1__btn-small magnetic">Free consultation</button>
         
         <!-- Mobile Menu Button -->
         <button class="s1__menu-btn" id="openMobileMenu">
@@ -59,10 +60,27 @@
 
       <div class="s1__hero">
         <div class="s1__hero-line s1__hero-line--light">YOU BRING THE AUDIENCE</div>
-        <div class="s1__hero-line s1__hero-line--green">
-          <img class="s1__hero-icon" src="./images/img3.webp" alt="Icon">
-          WE BUILD THE BUSINESS
-        </div>
+       <div class="s1__hero-line s1__hero-line--green">
+        <!-- Оновлений SVG з fill="currentColor" -->
+        <svg class="s1__hero-icon" xmlns="http://www.w3.org/2000/svg" width="115" height="115" viewBox="0 0 115 115" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M75.7482 39.1823C65.6656 29.0533 49.2602 29.0549 39.1793 39.1807C29.0486 49.2649 29.047 65.6719 39.1745 75.7545C49.257 85.8835 65.6656 85.8819 75.7482 75.7512C85.8773 65.6703 85.8805 49.2681 75.7482 39.1823Z" fill="currentColor"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M22.765 22.7652C13.9367 31.3689 11.202 44.8583 19.5651 54.742C29.8674 42.9127 42.9205 29.8628 54.7481 19.5621C44.8645 11.1974 31.3671 13.9386 22.765 22.7652Z" fill="currentColor"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M42.3887 109.23C50.9587 116.82 63.9781 116.828 72.5497 109.24C68.15 106.365 62.982 102.376 57.4692 97.6992C51.9564 102.372 46.79 106.357 42.3887 109.23Z" fill="currentColor"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M42.3555 5.6961C46.7584 8.56881 51.9328 12.5547 57.4536 17.2351C62.9713 12.5547 68.1441 8.564 72.547 5.69129C63.9802 -1.9003 50.9223 -1.89549 42.3555 5.6961Z" fill="currentColor"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M5.68628 42.375C-1.90371 50.9418 -1.89088 63.9676 5.6975 72.5377C8.57182 68.138 12.5561 62.97 17.2317 57.4587C12.5497 51.9427 8.56219 46.7747 5.68628 42.375Z" fill="currentColor"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M97.1961 97.1964C102.289 92.0734 106.413 86.4081 106.743 80.0195C98.4296 89.2055 89.1987 98.4363 80.0176 106.751C86.4078 106.416 92.0746 102.289 97.1961 97.1964Z" fill="currentColor"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M106.743 34.9177C106.409 28.5274 102.287 22.8638 97.1945 17.7375C92.0698 12.6481 86.4046 8.52113 80.0176 8.1875C89.1987 16.5009 98.4296 25.7349 106.743 34.9177Z" fill="currentColor"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M8.00195 79.8086C8.33237 86.21 12.4578 91.8817 17.5536 97.0096C22.6751 102.099 28.3323 106.221 34.7048 106.556C25.5269 98.2302 16.3025 88.9913 8.00195 79.8086Z" fill="currentColor"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5608 60.1816C11.1945 70.0669 13.9373 83.5611 22.764 92.168C31.3693 100.995 44.8554 103.728 54.7407 95.3615C42.9114 85.0624 29.8599 72.0109 19.5608 60.1816Z" fill="currentColor"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M95.3768 60.1895C85.0761 72.0171 72.0246 85.0686 60.1953 95.3709C70.079 103.737 83.5651 100.999 92.1737 92.1726C100.997 83.5673 103.74 70.0715 95.3768 60.1895Z" fill="currentColor"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M95.3331 54.7726C103.707 44.8873 100.977 31.3931 92.1492 22.7846C83.5407 13.9563 70.0369 11.2184 60.1484 19.5911C71.9777 29.8918 85.0292 42.9433 95.3331 54.7726Z" fill="currentColor"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M17.7384 17.7386C12.649 22.8633 8.52043 28.5301 8.18359 34.9171C16.4986 25.736 25.731 16.5051 34.9154 8.19336C28.5284 8.52538 22.8631 12.646 17.7384 17.7386Z" fill="currentColor"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M109.224 72.5681C116.816 63.9981 116.819 50.9594 109.228 42.3926C106.353 46.7923 102.369 51.9635 97.6934 57.4763C102.367 62.9924 106.353 68.1652 109.224 72.5681Z" fill="currentColor"/>
+        </svg>
+        <span>
+        WE BUILD THE BUSINESS
+        </span>
+      </div>
       </div>
 
       <div class="s1__row s1__row--bottom">
@@ -81,7 +99,7 @@
         <strong>Followers and recognition are your asset. Expertise and skills are your product.</strong>
         <span>You have the audience and the method. We build everything in between: the products, the funnels, the ads <br> strategy, the platform, the payments. With us, it becomes a business that makes money</span>
       </p>
-      <button class="s1__btn-large">
+      <button class="s1__btn-large magnetic">
         Free consultation
         <img class="s1__btn-square" src="./images/img8.webp" alt="">
       </button>
@@ -275,7 +293,7 @@
     </div>
     <div class="s5__cta-action">
       <p class="s5__cta-desc">Leave your contacts. We reply within two working days</p>
-      <button class="s5__btn">
+      <button class="s5__btn magnetic">
         Free consultation
         <div class="s5__btn-icon">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 13L13 1M13 1H1M13 1V13" stroke="black" stroke-width="2"/></svg>
@@ -612,7 +630,7 @@
     </p>
   </div>
   
-  <button class="s8__btn">
+  <button class="s8__btn magnetic">
     Join the waitlist
     <img src="./images/img8.png" class="s8__btn-icon" alt="">
   </button>
@@ -888,6 +906,7 @@
     <script src="./js/slider.js"></script>
     <script src="./js/faq.js"></script>
     <script src="./js/form.js"></script>
-     <script src="./js/menu.js"></script>
+    <script src="./js/menu.js"></script>
+    <script src="./js/anim.js"></script>
 </body>
 </html>
