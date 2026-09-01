@@ -156,6 +156,7 @@
   display: block;
   width: 100%;
   position: relative;
+  gap: 20px;
 }
 
 .s1__hero-line {
