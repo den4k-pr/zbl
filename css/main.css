@@ -2118,7 +2118,7 @@
   text-transform: uppercase;
   margin: 0;
   font-size: clamp(37.4px, 11.68vw, 50px);
-  line-height: 1;
+  line-height: 1.2;
 }
 
 .s9__desc {
@@ -2503,7 +2503,7 @@
   text-transform: uppercase;
   margin: 0;
   font-size: clamp(50px, 11.6vw, 85px);
-  line-height: 1;
+  line-height: 1.2;
 }
 
 .s10__desc {
