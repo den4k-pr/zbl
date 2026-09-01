@@ -651,33 +651,18 @@ if (cThanksDesc)  cThanksDesc.innerHTML    = T.c_thanks_desc;
       item.classList.toggle('s1__mobile-lang-btn--active', lang === 'en' ? isEN : !isEN);
     });
   }
-// ... (весь твій об'єкт TRANSLATIONS та інші функції залишаються як були)
 
   function switchLang(lang) {
     saveLang(lang);
     updateSwitchers(lang);
     applyTranslations();
-    
-    // ДОДАНО: додаємо або забираємо клас на body залежно від мови
-    if (lang === 'ua') {
-      document.body.classList.add('lang-ua');
-    } else {
-      document.body.classList.remove('lang-ua');
-    }
   }
 
   // ── ІНІЦІАЛІЗАЦІЯ ─────────────────────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', function () {
     const lang = getLang();
     updateSwitchers(lang);
-    
-    // ДОДАНО: одразу при завантаженні сторінки ставимо правильний клас
-    if (lang === 'ua') {
-      document.body.classList.add('lang-ua');
-      applyTranslations();
-    } else {
-      document.body.classList.remove('lang-ua');
-    }
+    if (lang !== 'en') applyTranslations();
 
     // Desktop switcher
     document.querySelectorAll('.s1__lang-item').forEach(item => {

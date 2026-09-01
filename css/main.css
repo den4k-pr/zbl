@@ -159,8 +159,8 @@
 }
 
 .s1__hero-line {
-  font-family: 'Teko', sans-serif;
-  font-size: clamp(48.6px, 15.18vw, 65px);
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(38.6px, 13.18vw, 55px);
   font-weight: 700;
   line-height: 0.85;
   text-transform: uppercase;
@@ -357,7 +357,7 @@
 
 .s1__mobile-link-text {
   color: #000;
-  font-family: 'Teko', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-weight: 700;
   font-size: clamp(30px, 9.34vw, 40px);
   text-transform: uppercase;
@@ -528,7 +528,7 @@
   }
 
   .s1__hero-line {
-    font-size: clamp(78px, 9.03vw, 130px);
+    font-size: clamp(68px, 7.03vw, 115px);
     line-height: 1;
     display: flex;
     align-items: center;
@@ -597,7 +597,7 @@
   font-variant-numeric: tabular-nums;
   text-align: center;
   color: #57CC2D;
-  font-family: 'Teko', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-weight: 700;
   text-transform: lowercase;
   
@@ -714,7 +714,7 @@
 
 .s3__title {
   color: #fff;
-  font-family: 'Teko', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   margin: 0;
@@ -763,7 +763,7 @@
 
 .s3__card-num {
   color: #fff;
-  font-family: 'Teko', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-weight: 700;
   letter-spacing: clamp(0.93px, 0.29vw, 1.28px);
   line-height: 1;
@@ -963,7 +963,7 @@
 }
 
 .s4__title {
-  font-family: 'Teko', sans-serif;
+  font-family: 'Oswald', sans-serif;
   color: #57CC2D;
   font-weight: 700;
   text-transform: uppercase;
@@ -973,7 +973,7 @@
 }
 
 .s4__subtitle {
-  font-family: 'Teko', sans-serif;
+  font-family: 'Oswald', sans-serif;
   color: #000;
   font-weight: 700;
   font-size: clamp(23.9px, 7.47vw, 32px);
@@ -1143,7 +1143,7 @@
   gap: clamp(24px, 7.47vw, 32px);
 }
 .s5__cta-header { display: flex; flex-direction: column; align-items: center; gap: clamp(6px, 1.87vw, 8px); width: 100%; }
-.s5__cta-title { color: #fff; font-family: 'Teko', sans-serif; font-weight: 700; text-align: center; margin: 0; font-size: clamp(37.5px, 11.68vw, 50px); line-height: 1; }
+.s5__cta-title { color: #fff; font-family: 'Oswald', sans-serif; font-weight: 700; text-align: center; margin: 0; font-size: clamp(37.5px, 11.68vw, 50px); line-height: 1; }
 .s5__cta-action { display: flex; flex-direction: column; align-items: center; gap: clamp(24px, 7.47vw, 32px); width: 100%; }
 .s5__cta-desc { color: #fff; font-weight: 400; text-align: center; margin: 0; font-size: clamp(18px, 5.6vw, 24px); }
 
@@ -1167,7 +1167,7 @@
 .s5__timeline-info { display: flex; flex-direction: column; gap: clamp(6px, 1.87vw, 8px); }
 .s5__timeline-header { display: flex; flex-direction: column; gap: clamp(6px, 1.87vw, 8px); }
 .s5__timeline-tag { color: #fff; opacity: 0.70; font-size: clamp(10.5px, 3.27vw, 14px); text-transform: uppercase; text-align: left; }
-.s5__timeline-title { color: #fff; font-family: 'Teko', sans-serif; font-weight: 700; margin: 0; font-size: clamp(37.5px, 11.68vw, 50px); line-height: 1; }
+.s5__timeline-title { color: #fff; font-family: 'Oswald', sans-serif; font-weight: 700; margin: 0; font-size: clamp(37.5px, 11.68vw, 50px); line-height: 1; }
 .s5__timeline-desc { color: #fff; opacity: 0.70; font-weight: 400; margin: 0; font-size: clamp(12px, 3.73vw, 16px); }
 
 
@@ -1474,7 +1474,7 @@
 
 .s6__title {
   color: #57CC2D;
-  font-family: 'Teko', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   margin: 0;
@@ -1564,7 +1564,7 @@
   position: absolute;
   bottom: clamp(-5px, -4.6vw, -10px);
   color: #FDFDFD;
-  font-family: 'Teko', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   margin: 0;
@@ -1759,7 +1759,7 @@
 
 .s7__title {
   color: var(--s7-accent);
-  font-family: 'Teko', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   margin: 0;
@@ -1970,7 +1970,7 @@
 
 .s8__tag {
   color: #000;
-  font-family: 'Teko', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   text-align: center;
@@ -1982,7 +1982,7 @@
 
 .s8__title {
   color: #000;
-  font-family: 'Teko', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   text-align: center;
@@ -2112,7 +2112,7 @@
 
 .s9__title {
   color: #fff;
-  font-family: 'Teko', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   margin: 0;
@@ -2497,7 +2497,7 @@
 
 .s10__title {
   color: #fff;
-  font-family: 'Teko', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   margin: 0;
@@ -2943,10 +2943,3 @@
 }
 
 
-
-@media (min-width: 864px) {
-  /* Застосовується тільки коли обрана українська мова */
-  body.lang-ua .s1__hero-line {
-    font-size: clamp(40px, 6.03vw, 95px) !important;
-  }
-}
