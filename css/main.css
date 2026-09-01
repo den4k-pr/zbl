@@ -2944,3 +2944,9 @@
 
 
 
+@media (min-width: 864px) {
+  /* Застосовується тільки коли обрана українська мова */
+  body.lang-ua .s1__hero-line {
+    font-size: clamp(40px, 6.03vw, 95px) !important;
+  }
+}

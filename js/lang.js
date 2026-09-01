@@ -192,7 +192,7 @@ c_thanks_desc: 'Ваш поштовий клієнт відкриється із
       // S1
       s1_row_right:   'Ми працюємо з <br class="s1__mobile-br"><strong>найкращими</strong> в <br class="s1__mobile-br">індустрії',
       s1_hero_1:      'ТИ ПРИВОДИШ АУДИТОРІЮ',
-      s1_hero_2:      'БУДУЄМО БІЗНЕС',
+      s1_hero_2:      'МИ БУДУЄМО БІЗНЕС',
       s1_row_left:    '<strong>70k+</strong> студентів одного автора',
       s1_desc_strong: 'Аудиторія та визнання — твій актив. Експертиза — твій продукт.',
       s1_desc_span:   'Ти маєш аудиторію та метод. Ми будуємо решту: продукти, воронки, рекламу, платформу, платежі. З нами це стає бізнесом',
@@ -651,18 +651,33 @@ if (cThanksDesc)  cThanksDesc.innerHTML    = T.c_thanks_desc;
       item.classList.toggle('s1__mobile-lang-btn--active', lang === 'en' ? isEN : !isEN);
     });
   }
+// ... (весь твій об'єкт TRANSLATIONS та інші функції залишаються як були)
 
   function switchLang(lang) {
     saveLang(lang);
     updateSwitchers(lang);
     applyTranslations();
+    
+    // ДОДАНО: додаємо або забираємо клас на body залежно від мови
+    if (lang === 'ua') {
+      document.body.classList.add('lang-ua');
+    } else {
+      document.body.classList.remove('lang-ua');
+    }
   }
 
   // ── ІНІЦІАЛІЗАЦІЯ ─────────────────────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', function () {
     const lang = getLang();
     updateSwitchers(lang);
-    if (lang !== 'en') applyTranslations();
+    
+    // ДОДАНО: одразу при завантаженні сторінки ставимо правильний клас
+    if (lang === 'ua') {
+      document.body.classList.add('lang-ua');
+      applyTranslations();
+    } else {
+      document.body.classList.remove('lang-ua');
+    }
 
     // Desktop switcher
     document.querySelectorAll('.s1__lang-item').forEach(item => {
