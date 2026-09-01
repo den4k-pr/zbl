@@ -154,6 +154,12 @@ table {
   justify-content: center;
 }
 
+@media(min-width: 864px){
+  .wrapper{
+    max-width: 1440px;
+  }
+}
+
 
 /* =========================================
    MOBILE BUTTON FLASH EFFECT

@@ -36,9 +36,11 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    max-width: 1440px;
     position: fixed;
     top: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 99;
     
     /* Додаємо box-sizing, щоб висота рахувалася разом з паддінгами */
@@ -1314,7 +1316,6 @@
   .s5__btn { width: 100%; font-size: clamp(15px, 1.73vw, 20px); padding: clamp(12px, 1.38vw, 16px) clamp(41.2px, 4.77vw, 55px); }
 
   .s5__timeline {
-    max-width: 80%;
     margin: 0 auto;
     flex-direction: row; 
     align-items: flex-start;
