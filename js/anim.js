@@ -426,3 +426,25 @@ document.addEventListener("DOMContentLoaded", () => {
   // Запускаємо один раз при завантаженні сторінки, щоб активувати першу картку, якщо ми вже доскролили
   checkCenterCard();
 });
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  // ТЕПЕР ВІДСТЕЖУЄМО ЗАГАЛЬНУ ОБГОРТКУ
+  const contactSection = document.querySelector('.c-contact__inner'); 
+
+  if (!contactSection) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-animated');
+        observer.unobserve(entry.target); 
+      }
+    });
+  }, {
+    threshold: 0.1 // Поставив 0.1, щоб анімація починалась трохи раніше
+  });
+
+  observer.observe(contactSection);
+});
